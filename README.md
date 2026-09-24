@@ -10,11 +10,11 @@ GeneVAE pretraining -> Tx2Mol post-training -> target-conditioned SMILES generat
 
 Choose the workflow that matches your goal:
 
-| Goal | Tutorial | Weights needed |
-| --- | --- | --- |
-| Generate with the released model | [Quick start](#2-quick-start-use-the-released-checkpoint) | Reference Tx2Mol and its matching GeneVAE |
-| Train and generate a new model | [Training](#4-train-the-three-stage-pipeline) | Unconditioned NovoMolGen base model |
-| Check the full pipeline before a long run | [Smoke test](#5-validate-the-pipeline) | Unconditioned NovoMolGen base model |
+| Goal | Tutorial |
+| --- | --- |
+| Generate with the released model | [Quick start](#2-quick-start-use-the-released-checkpoint) |
+| Train and generate a new model | [Training](#4-train-the-three-stage-pipeline) |
+| Check the full pipeline before a long run | [Smoke test](#5-validate-the-pipeline) |
 
 Source code and data are ordinary repository files. Large weights are [Release assets](https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0), downloaded and verified by the commands below. No private server paths or credentials are required.
 
