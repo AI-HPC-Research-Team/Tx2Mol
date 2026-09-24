@@ -5,7 +5,7 @@ Phenotype-driven de novo molecular design from gene expression signatures.
 This repository contains the executable pipeline, configurations, supplied datasets, regression tests, and a ten-target generation example:
 
 ```text
-GeneVAE pretraining -> Tx2Mol post-training -> target-conditioned SMILES generation
+GeneVAE pretraining -> Tx2Mol post-training -> phenotype-guided SMILES generation
 ```
 
 Choose the workflow that matches your goal:
