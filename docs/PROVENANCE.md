@@ -31,3 +31,5 @@ The historical BOS-embedding InfoNCE fallback is preserved, not silently repaire
 ## Data provenance boundary
 
 The supplied processed expression matrices, target signatures and reference ligands are packaged without numerical changes. Raw LINCS retrieval, upstream normalization and biological gene-ID alignment code were not present in the supplied training/generation entry points. The release records ordered columns and exact checksums, but does not invent absent upstream preprocessing steps.
+
+On 2026-09-25, patient data were restricted to the 12 diseases in the updated disease heatmap. The extra `test_gastric.csv` and alternate `source_gastric.csv` were removed; `stomach cancer` and all other retained files are byte-for-byte unchanged. `assets/data_manifest.json` describes the current data. `assets/source_manifest.json` remains the historical packaging snapshot, so it can contain files or hashes that differ from the maintained repository. The original combined ZIP is also retained as a historical snapshot.

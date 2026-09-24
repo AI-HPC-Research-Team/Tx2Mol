@@ -525,18 +525,6 @@
       "transformation": "none; exact byte copy",
       "expression_offset": 0
     },
-    "data/patient/test/test_gastric.csv": {
-      "sha256": "78a765aae70116ca870aace4131b759530162ee7141a3204286fb0db09b72c27",
-      "bytes": 13979,
-      "rows": 1,
-      "columns": 978,
-      "header": true,
-      "scenario": "patient",
-      "role": "test",
-      "source": "/root/autodl-tmp/CREED/test_gastric.csv",
-      "transformation": "none; exact byte copy",
-      "expression_offset": 0
-    },
     "data/patient/test/test_liver cirrhosis.csv": {
       "sha256": "62a68646bc5be9d437e521119c3a0c6cbe198bc7e8a47fd2dc35e9a0019c34a8",
       "bytes": 13258,
@@ -825,18 +813,6 @@
       "transformation": "none; exact byte copy",
       "collection": "alternate_collection_not_automatically_substituted"
     },
-    "data/patient/known_ligands/alternate_collection/source_gastric.csv": {
-      "sha256": "619b76f219c7fe5f19b27549bc8ad4c24e2fe4ea005f72546a6588db60180920",
-      "bytes": 7422,
-      "rows": 81,
-      "columns": 3,
-      "header": false,
-      "scenario": "patient",
-      "role": "known_ligands",
-      "source": "/root/autodl-tmp/CREED/ligands/source_gastric.csv",
-      "transformation": "none; exact byte copy",
-      "collection": "alternate_collection_not_automatically_substituted"
-    },
     "data/patient/known_ligands/alternate_collection/source_liver cirrhosis.csv": {
       "sha256": "363b80fe7a788bb7c28c2ba3a1e4866658541907678bfd030a1b572783975a25",
       "bytes": 19765,
@@ -927,13 +903,30 @@
     "patient": {
       "test_dir": "data/patient/test",
       "known_ligands_dir": "data/patient/known_ligands",
-      "test_files": 13,
+      "test_files": 12,
       "known_ligand_files": 12,
       "alternate_ligands_dir": "data/patient/known_ligands/alternate_collection",
-      "alternate_ligand_files": 13,
-      "missing_default_ligands": [
-        "gastric"
-      ]
+      "alternate_ligand_files": 12,
+      "missing_default_ligands": [],
+      "diseases": [
+        "Alzheimer",
+        "atopic dermatitis",
+        "breast cancer",
+        "chronic myeloid leukemia",
+        "colorectal cancer",
+        "endometrial cancer",
+        "liver cirrhosis",
+        "ovarian",
+        "pancreatic cancer",
+        "prostate cancer",
+        "stomach cancer",
+        "systemic lupus erythematosus"
+      ],
+      "cohort_reference": {
+        "source": "12_disease_top_percent_decontaminated.csv",
+        "sha256": "caeda2406ad05509df0b8b6f155a1fd7101b86245a5764aff564b12b338de395",
+        "selection": "Twelve disease rows in the updated heatmap; the Mean row is not a disease. The additional historical gastric entry is excluded; stomach cancer is retained."
+      }
     }
   }
 }

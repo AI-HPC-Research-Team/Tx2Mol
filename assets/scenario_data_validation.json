@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "scenario_csv_files": 64,
+  "scenario_csv_files": 62,
   "counts": {
     "targets": {
       "test": 10,
@@ -11,9 +11,9 @@
       "known_ligands": 3
     },
     "patient": {
-      "test": 13,
+      "test": 12,
       "known_ligands": 12,
-      "alternate_known_ligands": 13
+      "alternate_known_ligands": 12
     }
   },
   "checks": [
@@ -21,10 +21,10 @@
     "978 expression genes in expected order with finite values",
     "exact SciPlex3 non-control source-row and SMILES pairing",
     "generation config input paths exist",
-    "obsolete data/generation and data/ligands directories absent"
+    "obsolete data/generation and data/ligands directories absent",
+    "patient test, default ligands and alternate ligands match the 12 disease stems in the updated heatmap"
   ],
-  "missing_default_patient_ligands": [
-    "gastric"
-  ],
-  "scope": "Input reorganization validation; prior model execution results are retained separately."
+  "missing_default_patient_ligands": [],
+  "scope": "Current input validation after restricting patient data to the 12-disease heatmap cohort; prior model execution results are retained separately.",
+  "validated_on": "2026-09-25"
 }

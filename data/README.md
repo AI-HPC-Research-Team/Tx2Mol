@@ -34,14 +34,33 @@ To join references back to expression profiles, use `test_row` as the positional
 
 ## Patient/disease signatures
 
-`patient/test/` contains the 13 unchanged `test_DISEASE.csv` expression files used by the supplied patient generation script. These are disease-level processed signatures, with a 978-gene header, not newly constructed clinical records.
+`patient/test/` contains the 12 unchanged `test_DISEASE.csv` expression files corresponding to the updated 12-disease heatmap. These are disease-level processed signatures, with a 978-gene header, not newly constructed clinical records.
 
-The default `patient/known_ligands/source_DISEASE.csv` files are exact copies of the original generator's `CREED/new_ligands` collection. They are headerless, with three columns: SMILES, drug identifier and drug name. Twelve files exist in that collection; **gastric has no default ligand file**. This absence is explicitly recorded in `assets/data_manifest.json`.
+The same 12 file stems are used in `test/test_DISEASE.csv`, `known_ligands/source_DISEASE.csv`, and `known_ligands/alternate_collection/source_DISEASE.csv`:
 
-The separate `patient/known_ligands/alternate_collection/` directory preserves the 13 files from `CREED/ligands`, including gastric. This is a different collection and is not automatically merged with or substituted for the default. Neither collection is newly labelled as approved or exhaustive by this release.
+| Disease in the updated heatmap | `DISEASE` file stem |
+| --- | --- |
+| Alzheimer's disease | `Alzheimer` |
+| Atopic dermatitis | `atopic dermatitis` |
+| Breast cancer | `breast cancer` |
+| Chronic myeloid leukemia | `chronic myeloid leukemia` |
+| Colorectal cancer | `colorectal cancer` |
+| Endometrial cancer | `endometrial cancer` |
+| Liver cirrhosis | `liver cirrhosis` |
+| Ovarian cancer | `ovarian` |
+| Pancreatic cancer | `pancreatic cancer` |
+| Prostate cancer | `prostate cancer` |
+| Stomach cancer | `stomach cancer` |
+| Systemic lupus erythematosus | `systemic lupus erythematosus` |
+
+The additional historical `gastric` entry is excluded; the heatmap's `stomach cancer` input and ligands are retained under their original names.
+
+The default `patient/known_ligands/source_DISEASE.csv` files are exact copies of the original generator's `CREED/new_ligands` collection. They are headerless, with three columns: SMILES, drug identifier and drug name. All 12 retained diseases have a default ligand file.
+
+The separate `patient/known_ligands/alternate_collection/` directory preserves the corresponding 12 files from `CREED/ligands`. This is a different collection and is not automatically merged with or substituted for the default. Neither collection is newly labelled as approved or exhaustive by this release. Retained file contents and hashes are unchanged.
 
 ## Verification and execution scope
 
-`assets/data_manifest.json` records all 64 scenario CSV files, their hashes, sizes, schemas, original source locations and any export operation. Run `python scripts/validate_data.py` to check these files and the SciPlex3 row-level pairing.
+`assets/data_manifest.json` records all 62 scenario CSV files, their hashes, sizes, schemas, original source locations and any export operation. Its patient metadata records the 12 disease stems and the cohort-selection source. Run `python scripts/validate_data.py` to check these files and the SciPlex3 row-level pairing.
 
 The packaged command-line generation example is still the ten-target workflow. SciPlex3's row-oriented metadata-plus-expression matrices must not be passed to the target-only loader; patient files and cell-line conditioning also require their scenario-specific protocol. This update packages the actual inputs and references without silently changing their scientific meaning or claiming that a new scenario runner has been implemented.

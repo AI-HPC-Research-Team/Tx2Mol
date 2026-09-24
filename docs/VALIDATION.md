@@ -21,3 +21,7 @@ The last packaging change added only an early existing-output guard to GeneVAE p
 ## Repository publication checks (2026-09-25)
 
 The 19 CPU regression tests and complete supplied-data validation were rerun locally on macOS with Python 3.12 and PyTorch 2.6.0. One test assertion now resolves the expected temporary directory path to accommodate macOS `/var` versus `/private/var` aliases; model computations are unchanged. These checks do not replace the Linux/CUDA validation above. CSV files are excluded from Git text normalization so their recorded byte hashes survive cloning.
+
+## Patient cohort update (2026-09-25)
+
+The test, default-ligand, and alternate-ligand directories each contain exactly the 12 disease stems in the updated heatmap. The extra historical `gastric` files were removed, while `stomach cancer` was retained. All retained data hashes are unchanged. Complete data validation passed for the shared datasets and all 62 remaining scenario CSV files, including SciPlex3 row pairing. This data-only update did not rerun model training or generation.

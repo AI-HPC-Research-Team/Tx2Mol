@@ -246,14 +246,14 @@ data/
 │   ├── test/                     # A549, K562, MCF7 matrices
 │   └── known_ligands/            # paired perturbing molecules
 └── patient/
-    ├── test/                     # 13 disease signatures
+    ├── test/                     # 12 disease input files
     └── known_ligands/            # 12 default ligand collections
-        └── alternate_collection/ # 13 separately retained collections
+        └── alternate_collection/ # 12 separately retained collections
 ```
 
 The shared training matrices are headerless: `cell_line, compound_id, SMILES`, followed by 978 expression values. These are already processed signatures. The code preserves their values and order; upstream normalization and biological gene-ID alignment cannot be reconstructed from the headerless files alone. The 14-row held-out split is not a large additional benchmark.
 
-The executable tutorial covers **targets**. SciPlex3 has 144 rows per cell line, 11 metadata columns, and 978 expression columns; its 143 non-control references retain `test_row` pairing. Patient inputs use a different ligand schema, and the default collection lacks a gastric ligand file. These datasets are supplied with their original formats; the target-only CLI does not automatically implement the SciPlex3 or patient protocols. See [`data/README.md`](data/README.md).
+The executable tutorial covers **targets**. SciPlex3 has 144 rows per cell line, 11 metadata columns, and 978 expression columns; its 143 non-control references retain `test_row` pairing. Patient data are restricted to the 12 diseases in the updated disease heatmap, with matching default and alternate ligand collections. These datasets are supplied with their original formats; the target-only CLI does not automatically implement the SciPlex3 or patient protocols. See [`data/README.md`](data/README.md) for the disease list and file names.
 
 For an additional target, prepare `YOUR_TARGET.csv` with the 978 gene IDs from `data/gene_order.json` as its header and the numeric signature in the first data row. Prepare `source_YOUR_TARGET.csv` with a `SMILES` column, and choose a cell line supported by the checkpoint's mapping:
 
