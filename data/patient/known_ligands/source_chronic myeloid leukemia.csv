@@ -1,0 +1,36 @@
+C=C1/C(=C\C=C2/CCC[C@]3(C)[C@@H]([C@H](C)CCCC(C)(C)O)CC[C@@H]23)C[C@@H](O)C[C@@H]1O,DB00136,Calcitriol
+CC[C@]1(O)C[C@@H]2C[N@@](CCc3c([nH]c4ccccc34)[C@@](C(=O)OC)(c3cc4c(cc3OC)N(C=O)[C@H]3[C@@](O)(C(=O)OC)[C@H](OC(C)=O)[C@]5(CC)C=CCN6CC[C@]43[C@@H]65)C2)C1,DB00541,Vincristine
+Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1,DB00619,Imatinib
+COc1cccc2c1C(=O)c1c(O)c3c(c(O)c1C2=O)C[C@@](O)(C(C)=O)C[C@@H]3O[C@H]1C[C@H](N)[C@H](O)[C@H](C)O1,DB00694,Daunorubicin
+CC1=C(/C=C/C(C)=C/C=C/C(C)=C/C(=O)O)C(C)(C)CCC1,DB00755,Tretinoin
+NC(=O)c1ncn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)n1,DB00811,Ribavirin
+Cn1nnc2c(C(N)=O)ncn2c1=O,DB00853,Temozolomide
+Nc1ncn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1,DB00928,Azacitidine
+Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1,DB00987,Cytarabine
+CS(=O)(=O)OCCCCOS(C)(=O)=O,DB01008,Busulfan
+CC(=O)[C@]1(O)Cc2c(O)c3c(c(O)c2[C@@H](O[C@H]2C[C@H](N)[C@H](O)[C@H](C)O2)C1)C(=O)c1ccccc1C3=O,DB01177,Idarubicin
+Cc1cn[nH]c1,DB01213,Fomepizole
+Cc1nc(Nc2ncc(C(=O)Nc3c(C)cccc3Cl)s2)cc(N2CCN(CCO)CC2)n1,DB01254,Dasatinib
+Nc1ncn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1,DB01262,Decitabine
+COC(=O)C[C@](O)(CCCC(C)(C)O)C(=O)O[C@@H]1C(OC)=C[C@]23CCCN2CCc2cc4c(cc2[C@H]13)OCO4,DB04865,Omacetaxine mepesuccinate
+Cc1cn(-c2cc(NC(=O)c3ccc(C)c(Nc4nccc(-c5cccnc5)n4)c3)cc(C(F)(F)F)c2)cn1,DB04868,Nilotinib
+C/C=C(/C)C(=O)O[C@H]1C(C)=C[C@]23C(=O)[C@H](C=C(CO)[C@@H](O)[C@]12O)[C@H]1[C@@H](C[C@H]3C)C1(C)C,DB05013,Ingenol mebutate
+CO[C@@H]1[C@H](N(C)C(=O)c2ccccc2)C[C@H]2O[C@]1(C)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4,DB06595,Midostaurin
+COc1cc(Nc2c(C#N)cnc3cc(OCCCN4CCN(C)CC4)c(OC)cc23)c(Cl)cc1Cl,DB06616,Bosutinib
+Cc1ccc(C(=O)Nc2ccc(CN3CCN(C)CC3)c(C(F)(F)F)c2)cc1C#Cc1cnc2cccnn12,DB08901,Ponatinib
+C=C(C)[C@@H]1CCC(C)=C[C@H]1c1c(O)cc(CCCCC)cc1O,DB09061,Cannabidiol
+COC(=O)c1ccc2c(c1)NC(=O)/C2=C(\Nc1ccc(N(C)C(=O)CN2CCN(C)CC2)cc1)c1ccccc1,DB09079,Nintedanib
+O=C(OOC(=O)c1ccccc1)c1ccccc1,DB09096,Benzoyl peroxide
+CC1(C)CCC(CN2CCN(c3ccc(C(=O)NS(=O)(=O)c4ccc(NCC5CCOCC5)c([N+](=O)[O-])c4)c(Oc4cnc5[nH]ccc5c4)c3)CC2)=C(c2ccc(Cl)cc2)C1,DB11581,Venetoclax
+C[C@H]1[C@@H](O)O[C@@H]2O[C@@]3(C)CC[C@H]4[C@H](C)CC[C@@H]1[C@@]24OO3,DB11638,Artenimol
+CN1CC[C@@H](NC(=O)Nc2ccc(C#N)cc2)C[C@@H]1c1nc2ccccc2[nH]1,DB11978,Glasdegib
+COc1cc(Nc2ncc(F)c(Nc3ccc4c(n3)N(COP(=O)(O)O)C(=O)C(C)(C)O4)n2)cc(OC)c1OC,DB12010,Fostamatinib
+CCc1nc(C(N)=O)c(Nc2ccc(N3CCC(N4CCN(C)CC4)CC3)c(OC)c2)nc1NC1CCOCC1,DB12141,Gilteritinib
+O=C(Nc1ccc(OC(F)(F)Cl)cc1)c1cnc(N2CC[C@@H](O)C2)c(-c2ccn[nH]2)c1,DB12597,Asciminib
+CC(C)(C)c1cc(NC(=O)Nc2ccc(-c3cn4c(n3)sc3cc(OCCN5CCOCC5)ccc34)cc2)no1,DB12874,Quizartinib
+CC(C)(O)CNc1nc(Nc2ccnc(C(F)(F)F)c2)nc(-c2cccc(C(F)(F)F)n2)n1,DB13874,Enasidenib
+N#Cc1ccnc(N2C(=O)CC[C@H]2C(=O)N(c2cncc(F)c2)[C@H](C(=O)NC2CC(F)(F)C2)c2ccccc2Cl)c1,DB14568,Ivosidenib
+CCCCCCCCCCCCCCCC(=O)NCC(O)COP(=O)(S)OCC1OC(n2cc(C)c(=O)[nH]c2=O)CC1NP(=O)(S)OCC1OC(n2cnc3c(N)ncnc32)CC1NP(=O)(S)OCC1OC(n2cnc3c(=O)[nH]c(N)nc32)CC1NP(=O)(S)OCC1OC(n2cnc3c(=O)[nH]c(N)nc32)CC1NP(=O)(S)OCC1OC(n2cnc3c(=O)[nH]c(N)nc32)CC1NP(=O)(S)OCC1OC(n2cc(C)c(=O)[nH]c2=O)CC1NP(=O)(S)OCC1OC(n2cc(C)c(=O)[nH]c2=O)CC1NP(=O)(S)OCC1OC(n2cnc3c(N)ncnc32)CC1NP(=O)(S)OCC1OC(n2cnc3c(=O)[nH]c(N)nc32)CC1NP(=O)(S)OCC1OC(n2cnc3c(N)ncnc32)CC1NP(=O)(S)OCC1OC(n2ccc(N)nc2=O)CC1NP(=O)(S)OCC1OC(n2cnc3c(N)ncnc32)CC1NP(=O)(S)OCC1OC(n2cnc3c(N)ncnc32)CC1N,DB14909,Imetelstat
+O=C1N[C@H](O)CCN1[C@@H]1O[C@H](CO)[C@@H](O)C1(F)F,DB15694,Cedazuridine
+C[C@H](Nc1ccc(C#N)n(C)c1=O)c1cc2cc(Cl)ccc2[nH]c1=O,DB16267,Olutasidenib
+C[C@@H](Nc1nc(N[C@H](C)C(F)(F)F)nc(-c2cccc(Cl)n2)n1)C(F)(F)F,DB17097,Vorasidenib

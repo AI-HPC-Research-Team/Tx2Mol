@@ -1,0 +1,32 @@
+C/C1=C2/N=C(/C=C3\N=C(/C(C)=C4/[C@@H](CCC(N)=O)[C@](C)(CC(N)=O)[C@](C)([C@@H]5N=C1[C@](C)(CCC(=O)NC[C@@H](C)OP(=O)([O-])O[C@H]1[C@@H](O)[C@@H](n6cnc7cc(C)c(C)cc76)O[C@@H]1CO)[C@H]5CC(N)=O)N4[Co+]C#N)[C@@](C)(CC(N)=O)[C@@H]3CCC(N)=O)C(C)(C)[C@@H]2CCC(N)=O,DB00115,Cyanocobalamin
+CSCC[C@H](NC(=O)[C@H](Cc1c[nH]c2ccccc12)NC(=O)CCNC(=O)OC(C)(C)C)C(=O)N[C@@H](CC(=O)O)C(=O)N[C@@H](Cc1ccccc1)C(N)=O,DB00183,Pentagastrin
+COc1ccnc(CS(=O)c2nc3ccc(OC(F)F)cc3[nH]2)c1OC,DB00213,Pantoprazole
+COc1ccc2nc(S(=O)Cc3ncc(C)c(OC)c3C)[nH]c2c1,DB00338,Omeprazole
+O=c1[nH]c(=O)n([C@H]2C[C@H](O)[C@@H](CO)O2)cc1C(F)(F)F,DB00432,Trifluridine
+Cc1c(OCC(F)(F)F)ccnc1CS(=O)c1nc2ccccc2[nH]1,DB00448,Lansoprazole
+CO[C@H]1/C=C/O[C@@]2(C)Oc3c(C)c(O)c4c(c3C2=O)C2=NC3(CCN(CC(C)C)CC3)NC2=C(NC(=O)/C(C)=C\C=C\[C@H](C)[C@H](O)[C@@H](C)[C@@H](O)[C@@H](C)[C@H](OC(C)=O)[C@@H]1C)C4=O,DB00615,Rifabutin
+COc1ccc2[nH]c([S@@](=O)Cc3ncc(C)c(OC)c3C)nc2c1,DB00736,Esomeprazole
+CCS(=O)(=O)CCn1c([N+](=O)[O-])cnc1C,DB00911,Tinidazole
+Cc1ncc([N+](=O)[O-])n1CCO,DB00916,Metronidazole
+COc1cccc2c1C(=O)c1c(O)c3c(c(O)c1C2=O)C[C@@](O)(C(=O)CO)C[C@@H]3O[C@H]1C[C@H](N)[C@H](O)[C@H](C)O1,DB00997,Doxorubicin
+CC1(C)S[C@@H]2[C@H](NC(=O)[C@H](N)c3ccc(O)cc3)C(=O)N2[C@H]1C(=O)O,DB01060,Amoxicillin
+CCCCCOC(=O)Nc1nc(=O)n([C@@H]2O[C@H](C)[C@@H](O)[C@H]2O)cc1F,DB01101,Capecitabine
+COCCCOc1ccnc(CS(=O)c2nc3ccccc3[nH]2)c1C,DB01129,Rabeprazole
+C[C@H]1COc2c(N3CCN(C)CC3)c(F)cc3c(=O)c(C(=O)O)cn1c23,DB01137,Levofloxacin
+CC[C@H]1OC(=O)[C@H](C)[C@@H](O[C@H]2C[C@@](C)(OC)[C@@H](O)[C@H](C)O2)[C@H](C)[C@@H](O[C@@H]2O[C@H](C)C[C@H](N(C)C)[C@H]2O)[C@](C)(OC)C[C@@H](C)C(=O)[C@H](C)[C@@H](O)[C@]1(C)O,DB01211,Clarithromycin
+CC(=O)O[C@@]12CO[C@@H]1C[C@H](O)[C@@]1(C)C(=O)[C@H](O)C3=C(C)[C@@H](OC(=O)[C@H](O)[C@@H](NC(=O)OC(C)(C)C)c4ccccc4)C[C@@](O)([C@@H](OC(=O)c4ccccc4)[C@H]21)C3(C)C,DB01248,Docetaxel
+O=C1O[Bi](O)Oc2ccccc21,DB01294,Bismuth subsalicylate
+COc1cc2c(cc1O)CCN[C@]21CS[C@@H]2c3c(OC(C)=O)c(C)c4c(c3[C@H](COC1=O)N1[C@@H]2[C@H]2c3c(cc(C)c(OC)c3O)C[C@@H]([C@@H]1O)N2C)OCO4,DB05109,Trabectedin
+[Al+3].[OH-].[OH-].[OH-],DB06723,Aluminum hydroxide
+O=C([O-])[O-].[Ca+2],DB06724,Calcium carbonate
+O=c1[nH]c(=O)n(C2CCCO2)cc1F,DB09256,Tegafur
+O=C([O-])CC([O-])(CC(=O)[O-])C(=O)[O-].O=C([O-])CC([O-])(CC(=O)[O-])C(=O)[O-].[Bi+3].[K+].[K+].[K+].[K+].[K+],DB09275,Bismuth subcitrate potassium
+N=C1CCCN1Cc1[nH]c(=O)[nH]c(=O)c1Cl,DB09343,Tipiracil
+N[13C](N)=O,DB09510,Urea C-13
+N[14C](N)=O,DB09513,Urea C-14
+CNCc1cc(-c2ccccc2F)n(S(=O)(=O)c2cccnc2)c1,DB11739,Vonoprazan
+COc1cc(Nc2ncc(F)c(Nc3ccc4c(n3)N(COP(=O)(O)O)C(=O)C(C)(C)O4)n2)cc(OC)c1OC,DB12010,Fostamatinib
+O=[N+]([O-])[O-].O=[N+]([O-])[O-].O=[N+]([O-])[O-].O=[N+]([O-])[O-].[Bi+3].[Bi+3].[Bi+3].[Bi+3].[Bi+3].[O-2].[OH-].[OH-].[OH-].[OH-].[OH-].[OH-].[OH-].[OH-].[OH-],DB13209,Bismuth subnitrate
+O=C(O)c1cc(O)c2c(c1)O[Bi](O)O2,DB13909,Bismuth subgallate
+CN1CCC(COc2cnc(-c3cccc(Cn4nc(-c5cccc(C#N)c5)ccc4=O)c3)nc2)CC1,DB15133,Tepotinib
+O=C([O-])CCc1ccc(O)c(CN(CCN(CC(=O)[O-])Cc2cc(CCC(=O)NCCCCCC(=O)NCCCC[C@H](NC(=O)N[C@@H](CCC(=O)O)C(=O)O)C(=O)O)ccc2O)CC(=O)[O-])c1.[68Ga+3],DB16019,Gallium Ga-68 gozetotide

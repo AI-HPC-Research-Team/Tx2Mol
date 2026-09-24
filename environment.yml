@@ -1,0 +1,11 @@
+name: tx2mol
+channels:
+  - conda-forge
+  - nvidia/label/cuda-11.8.0
+dependencies:
+  - python=3.10.18
+  - pip
+  - cuda-toolkit=11.8
+  - gxx_linux-64=11
+  - libstdcxx-ng
+# Then: conda activate tx2mol && bash scripts/install.sh

@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "scenario_csv_files": 64,
+  "counts": {
+    "targets": {
+      "test": 10,
+      "known_ligands": 10
+    },
+    "sciplex3": {
+      "test": 3,
+      "known_ligands": 3
+    },
+    "patient": {
+      "test": 13,
+      "known_ligands": 12,
+      "alternate_known_ligands": 13
+    }
+  },
+  "checks": [
+    "all data hashes, sizes, row and column counts",
+    "978 expression genes in expected order with finite values",
+    "exact SciPlex3 non-control source-row and SMILES pairing",
+    "generation config input paths exist",
+    "obsolete data/generation and data/ligands directories absent"
+  ],
+  "missing_default_patient_ligands": [
+    "gastric"
+  ],
+  "scope": "Input reorganization validation; prior model execution results are retained separately."
+}

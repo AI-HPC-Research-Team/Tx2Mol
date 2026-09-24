@@ -1,0 +1,4 @@
+CC(C)[C@@]1(NC(=O)[C@@H]2C[C@@H]3c4cccc5[nH]cc(c45)C[C@H]3N(C)C2)O[C@@]2(O)[C@@H]3CCCN3C(=O)[C@H](Cc3ccccc3)N2C1=O,DB13345,Dihydroergocristine
+CN(C)c1ccc2nc3ccc(N(C)C)cc3[s+]c2c1.[Cl-],DB09241,Methylene blue
+Cc1nc2n(c(=O)c1CCN1CCC(c3noc4cc(F)ccc34)CC1)CCCC2,DB00734,Risperidone
+COc1ccc2c3c1O[C@H]1C[C@@H](OC(=O)c4ccccc4)C=C[C@@]31CCN(C)C2,DB19353,Benzgalantamine

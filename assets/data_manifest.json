@@ -1,0 +1,939 @@
+{
+  "schema_version": 1,
+  "dataset_files": {
+    "data/train.csv.gz": {
+      "sha256": "289ac1a2e3c47a9a68f5d6c4b836c433d7381d92d6e3cbdafc234959ae032b8a",
+      "bytes": 19030391,
+      "uncompressed_sha256": "e70861ccd421067b7c230420a5a8990ed8699edaf00f76bb3a8763a44a331ecb",
+      "rows": 25364,
+      "columns": 981,
+      "cell_counts": {
+        "MCF7": 4010,
+        "PC3": 4531,
+        "A549": 2205,
+        "A375": 3107,
+        "HT29": 2754,
+        "HA1E": 3152,
+        "MCF10A": 689,
+        "YAPC": 1084,
+        "HELA": 1238,
+        "MDAMB231": 563,
+        "HEK293": 551,
+        "THP1": 365,
+        "JURKAT": 338,
+        "HEPG2": 777
+      }
+    },
+    "data/val.csv.gz": {
+      "sha256": "cc48f8bdb4c086654b59f4eafdc8f430ccef6c6d25d28a78bfeb4260aedbb027",
+      "bytes": 1511445,
+      "uncompressed_sha256": "25b46943311c1bc5135defb2ee1619674a00201f9d3870cffc47337586932696",
+      "rows": 2000,
+      "columns": 981,
+      "cell_counts": {
+        "MCF7": 317,
+        "PC3": 358,
+        "A549": 174,
+        "A375": 245,
+        "HT29": 218,
+        "HA1E": 249,
+        "MCF10A": 54,
+        "YAPC": 85,
+        "HELA": 98,
+        "MDAMB231": 44,
+        "HEK293": 43,
+        "THP1": 28,
+        "JURKAT": 26,
+        "HEPG2": 61
+      }
+    },
+    "data/test.csv.gz": {
+      "sha256": "7f9aece9fca6d5a2696a89a340f69fa85382de1f6b340c96b1513ceca2380ef8",
+      "bytes": 10251,
+      "uncompressed_sha256": "2fbdd37d18e91cb6f848ea14340b6f669ebf2d70cda6db1b753e1fde9c34a366",
+      "rows": 14,
+      "columns": 981,
+      "cell_counts": {
+        "MCF7": 1,
+        "PC3": 1,
+        "A549": 1,
+        "A375": 1,
+        "HT29": 1,
+        "HA1E": 1,
+        "MCF10A": 1,
+        "YAPC": 1,
+        "HELA": 1,
+        "MDAMB231": 1,
+        "HEK293": 1,
+        "THP1": 1,
+        "JURKAT": 1,
+        "HEPG2": 1
+      }
+    }
+  },
+  "target_files": {
+    "AKT1": {
+      "expression_rows": 1,
+      "sha256": "6be99bafd6c68d1edb02a691edd8b6d395f606b0a661092a29846e00a72a8c8e",
+      "ligands_sha256": "1755985570914f6e32f9f0d4d1ef5638b1e64f9868d25731e600d98accab8951"
+    },
+    "AKT2": {
+      "expression_rows": 1,
+      "sha256": "0b05af1aaacd57839374fe3dac0c7b16e07f2d93cf36251fe2dab9706d1b8032",
+      "ligands_sha256": "ee2fcdc7c5c62444b4f145110bc9473e3b29a31d9517c68db962662d68f98846"
+    },
+    "AURKB": {
+      "expression_rows": 1,
+      "sha256": "27e599a98a55955d58be11b55ef43b666476badaeb596e04157c530ff73691f7",
+      "ligands_sha256": "f0203fd8abd7a4ab854f38fad0294d2ea1268284adee28ab99f04547b632ed14"
+    },
+    "CTSK": {
+      "expression_rows": 1,
+      "sha256": "940b5a9ab5c46b55c770df331e2fb486d8c8692929fca7b79d1ee9da072b221b",
+      "ligands_sha256": "8e330dcd2a8fccf1fe0e7ead6081df84842a213986abd7f1f70325721777905b"
+    },
+    "EGFR": {
+      "expression_rows": 1,
+      "sha256": "6710f2eb42c9a962b7bdd61e3b6a70973fd449677908f8a37378cde6437227c5",
+      "ligands_sha256": "f9a8bc55485651e87d2fd2a61d62ba4190244324ffdebb159e862692eb305843"
+    },
+    "HDAC1": {
+      "expression_rows": 1,
+      "sha256": "d9eff2d58d47b4e7d972420ddfd1f41b28f7ec1854dcec93d8b3489d3ac89537",
+      "ligands_sha256": "d01bf5fbb273cdec7970e01ae6dc885fe9d5501ce0ccd5f0d7027932ab3d984d"
+    },
+    "MTOR": {
+      "expression_rows": 1,
+      "sha256": "9a007591bb4b3e3cdf3f7b972d41b3cc1dc7c00a36d17b9e7e9a75bdf530d9c8",
+      "ligands_sha256": "e19f9063bbf26ce64499753dc93e8bb6a1131b850df05b0455aa6f8153a12c56"
+    },
+    "PIK3CA": {
+      "expression_rows": 1,
+      "sha256": "1f523456aaea2547ed8ebf3020e2fab3339c471cfb79b0d94de72432aeb3ffa9",
+      "ligands_sha256": "940f3ddd6dbe058551b06bc7294f415696c6e31cbaae2ba98ad74a21a53145a7"
+    },
+    "SMAD3": {
+      "expression_rows": 1,
+      "sha256": "39b9e677be65884e72c265a9a382641ed8cf2534abc756f057df4ed9de74a09c",
+      "ligands_sha256": "71e701db4f2f4238a9055066ca28994a8b77256b56d2e21b8bc5d6fe49c57449"
+    },
+    "TP53": {
+      "expression_rows": 1,
+      "sha256": "33470111215abfc44959cfa186d1b5ebb05908031ecf65c130a12ae5e308f21d",
+      "ligands_sha256": "09d2de56e8ec1d584cc12eb0b9334234362b8fc1d71318a16b199cee5efac37f"
+    }
+  },
+  "gene_order": {
+    "path": "data/gene_order.json",
+    "source": "Identical header in the ten supplied target expression CSVs",
+    "training_order_status": "Training matrices have no gene-ID header; their supplied column order is retained. Equality of biological gene IDs cannot be independently inferred from these matrices."
+  },
+  "reference_gene_vae": {
+    "path": "checkpoints/gene_vae_reference.pt",
+    "sha256": "2bcc46ff71ebbfba65ef17d20a301680be5c579bf05495f2fd6d84e87d224a7e"
+  },
+  "targets": [
+    "AKT1",
+    "AKT2",
+    "AURKB",
+    "CTSK",
+    "EGFR",
+    "HDAC1",
+    "MTOR",
+    "PIK3CA",
+    "SMAD3",
+    "TP53"
+  ],
+  "training_schema": [
+    "cell_line",
+    "compound_id",
+    "SMILES",
+    "978 ordered expression values"
+  ],
+  "scenario_files": {
+    "data/targets/test/AKT1.csv": {
+      "sha256": "6be99bafd6c68d1edb02a691edd8b6d395f606b0a661092a29846e00a72a8c8e",
+      "bytes": 15917,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/AKT1.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_AKT1.csv": {
+      "sha256": "1755985570914f6e32f9f0d4d1ef5638b1e64f9868d25731e600d98accab8951",
+      "bytes": 144731,
+      "rows": 2235,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_AKT1.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/targets/test/AKT2.csv": {
+      "sha256": "0b05af1aaacd57839374fe3dac0c7b16e07f2d93cf36251fe2dab9706d1b8032",
+      "bytes": 15987,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/AKT2.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_AKT2.csv": {
+      "sha256": "ee2fcdc7c5c62444b4f145110bc9473e3b29a31d9517c68db962662d68f98846",
+      "bytes": 84174,
+      "rows": 1367,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_AKT2.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/targets/test/AURKB.csv": {
+      "sha256": "27e599a98a55955d58be11b55ef43b666476badaeb596e04157c530ff73691f7",
+      "bytes": 15887,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/AURKB.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_AURKB.csv": {
+      "sha256": "f0203fd8abd7a4ab854f38fad0294d2ea1268284adee28ab99f04547b632ed14",
+      "bytes": 136971,
+      "rows": 2202,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_AURKB.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/targets/test/CTSK.csv": {
+      "sha256": "940b5a9ab5c46b55c770df331e2fb486d8c8692929fca7b79d1ee9da072b221b",
+      "bytes": 15315,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/CTSK.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_CTSK.csv": {
+      "sha256": "8e330dcd2a8fccf1fe0e7ead6081df84842a213986abd7f1f70325721777905b",
+      "bytes": 108665,
+      "rows": 1608,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_CTSK.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/targets/test/EGFR.csv": {
+      "sha256": "6710f2eb42c9a962b7bdd61e3b6a70973fd449677908f8a37378cde6437227c5",
+      "bytes": 15944,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/EGFR.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_EGFR.csv": {
+      "sha256": "f9a8bc55485651e87d2fd2a61d62ba4190244324ffdebb159e862692eb305843",
+      "bytes": 143803,
+      "rows": 2330,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_EGFR.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/targets/test/HDAC1.csv": {
+      "sha256": "d9eff2d58d47b4e7d972420ddfd1f41b28f7ec1854dcec93d8b3489d3ac89537",
+      "bytes": 15942,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/HDAC1.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_HDAC1.csv": {
+      "sha256": "d01bf5fbb273cdec7970e01ae6dc885fe9d5501ce0ccd5f0d7027932ab3d984d",
+      "bytes": 62831,
+      "rows": 1003,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_HDAC1.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/targets/test/MTOR.csv": {
+      "sha256": "9a007591bb4b3e3cdf3f7b972d41b3cc1dc7c00a36d17b9e7e9a75bdf530d9c8",
+      "bytes": 15932,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/MTOR.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_MTOR.csv": {
+      "sha256": "e19f9063bbf26ce64499753dc93e8bb6a1131b850df05b0455aa6f8153a12c56",
+      "bytes": 102868,
+      "rows": 1587,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_MTOR.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/targets/test/PIK3CA.csv": {
+      "sha256": "1f523456aaea2547ed8ebf3020e2fab3339c471cfb79b0d94de72432aeb3ffa9",
+      "bytes": 15918,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/PIK3CA.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_PIK3CA.csv": {
+      "sha256": "940f3ddd6dbe058551b06bc7294f415696c6e31cbaae2ba98ad74a21a53145a7",
+      "bytes": 77226,
+      "rows": 1198,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_PIK3CA.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/targets/test/SMAD3.csv": {
+      "sha256": "39b9e677be65884e72c265a9a382641ed8cf2534abc756f057df4ed9de74a09c",
+      "bytes": 15351,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/SMAD3.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_SMAD3.csv": {
+      "sha256": "71e701db4f2f4238a9055066ca28994a8b77256b56d2e21b8bc5d6fe49c57449",
+      "bytes": 721307,
+      "rows": 12687,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_SMAD3.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/targets/test/TP53.csv": {
+      "sha256": "33470111215abfc44959cfa186d1b5ebb05908031ecf65c130a12ae5e308f21d",
+      "bytes": 15403,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "targets",
+      "role": "test",
+      "source": "/root/autodl-tmp/GE-data/test_protein/TP53.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/targets/known_ligands/source_TP53.csv": {
+      "sha256": "09d2de56e8ec1d584cc12eb0b9334234362b8fc1d71318a16b199cee5efac37f",
+      "bytes": 381103,
+      "rows": 6892,
+      "columns": 1,
+      "header": true,
+      "scenario": "targets",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/GE-data/ligands/source_TP53.csv",
+      "transformation": "none; exact byte copy"
+    },
+    "data/sciplex3/test/A549_normalized_final.csv": {
+      "sha256": "848ae61149987c57e216fccc2e55f1c88ff7c155e50a545b13087dfac75670ea",
+      "bytes": 2110989,
+      "rows": 144,
+      "columns": 989,
+      "header": true,
+      "scenario": "sciplex3",
+      "role": "test",
+      "source": "/root/autodl-tmp/sciplex/A549_normalized_final.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 11
+    },
+    "data/sciplex3/known_ligands/source_A549.csv": {
+      "sha256": "e7be9f5dbb26a44bc7dc53f59bdb5be950bbf992809c2e5fbd0ccdf04e5a924b",
+      "bytes": 26879,
+      "rows": 143,
+      "columns": 13,
+      "header": true,
+      "scenario": "sciplex3",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/sciplex/A549_normalized_final.csv",
+      "paired_test": "data/sciplex3/test/A549_normalized_final.csv",
+      "transformation": "Export original metadata and SMILES for every non-control row; test_row is zero-based in source data rows; no deduplication or chemical transformation"
+    },
+    "data/sciplex3/test/K562_normalized_final.csv": {
+      "sha256": "7563e1dea99245d05a38d8598a0ba1b83a391e484598f92b5fb88fd5bbc9b572",
+      "bytes": 2092517,
+      "rows": 144,
+      "columns": 989,
+      "header": true,
+      "scenario": "sciplex3",
+      "role": "test",
+      "source": "/root/autodl-tmp/sciplex/K562_normalized_final.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 11
+    },
+    "data/sciplex3/known_ligands/source_K562.csv": {
+      "sha256": "bf9df8567496a52b0bb27736d7032c1dc5a350f1c44bca8527fc2a0a608ba120",
+      "bytes": 26736,
+      "rows": 143,
+      "columns": 13,
+      "header": true,
+      "scenario": "sciplex3",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/sciplex/K562_normalized_final.csv",
+      "paired_test": "data/sciplex3/test/K562_normalized_final.csv",
+      "transformation": "Export original metadata and SMILES for every non-control row; test_row is zero-based in source data rows; no deduplication or chemical transformation"
+    },
+    "data/sciplex3/test/MCF7_normalized_final.csv": {
+      "sha256": "da30d3146a85281da14054a20b1dad1ef633ba9706b33ab873b3e15ed88aed7a",
+      "bytes": 2314460,
+      "rows": 144,
+      "columns": 989,
+      "header": true,
+      "scenario": "sciplex3",
+      "role": "test",
+      "source": "/root/autodl-tmp/sciplex/MCF7_normalized_final.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 11
+    },
+    "data/sciplex3/known_ligands/source_MCF7.csv": {
+      "sha256": "019163b885b5a52cc069b23317de0877b6ab270f3321b28102109021471263bd",
+      "bytes": 26879,
+      "rows": 143,
+      "columns": 13,
+      "header": true,
+      "scenario": "sciplex3",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/sciplex/MCF7_normalized_final.csv",
+      "paired_test": "data/sciplex3/test/MCF7_normalized_final.csv",
+      "transformation": "Export original metadata and SMILES for every non-control row; test_row is zero-based in source data rows; no deduplication or chemical transformation"
+    },
+    "data/patient/test/test_Alzheimer.csv": {
+      "sha256": "e68568214fe123adc03afa0366c67e618bfd24251b7e83f4f52c91b19c773113",
+      "bytes": 13664,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_Alzheimer.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_atopic dermatitis.csv": {
+      "sha256": "fc70d9ca5fec80ce9f30eff790ebd1646eb6dd9a5562956311bcc65ac4058f6e",
+      "bytes": 13502,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_atopic dermatitis.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_breast cancer.csv": {
+      "sha256": "47f402c5e99590ef5ca20cb450e967d68593aaf9b17cf41fa119e3245950a575",
+      "bytes": 14873,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_breast cancer.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_chronic myeloid leukemia.csv": {
+      "sha256": "e7799da1e2d53517c860a8e88c996323a93d8cf19c47c13b798f3fd655636cba",
+      "bytes": 15713,
+      "rows": 2,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_chronic myeloid leukemia.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_colorectal cancer.csv": {
+      "sha256": "2732ef31b0196f4f2aad135c4f232b33008c3d69fde3013d26634465b1a85b5f",
+      "bytes": 15683,
+      "rows": 2,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_colorectal cancer.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_endometrial cancer.csv": {
+      "sha256": "f913b046691aa417553c78375434611bf7df165caef1ba57606644582f8fcdf7",
+      "bytes": 13768,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_endometrial cancer.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_gastric.csv": {
+      "sha256": "78a765aae70116ca870aace4131b759530162ee7141a3204286fb0db09b72c27",
+      "bytes": 13979,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_gastric.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_liver cirrhosis.csv": {
+      "sha256": "62a68646bc5be9d437e521119c3a0c6cbe198bc7e8a47fd2dc35e9a0019c34a8",
+      "bytes": 13258,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_liver cirrhosis.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_ovarian.csv": {
+      "sha256": "abeca900e895541c51df8be6a65cb29012f806c74085d0d15cf3fe117bfd3237",
+      "bytes": 13501,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_ovarian.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_pancreatic cancer.csv": {
+      "sha256": "0ab666e47322f3aee18872d08d605bf8c70fc1dac7afe0cbd788fa6c99fb9172",
+      "bytes": 13887,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_pancreatic cancer.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_prostate cancer.csv": {
+      "sha256": "efa6abb7010b65adfe21eb2909273928c307321fe47091d135f48817fa5b1083",
+      "bytes": 14381,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_prostate cancer.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_stomach cancer.csv": {
+      "sha256": "e8a5623cac5f85bb4b9abfa085f37e1420bf1247912d564e153eeb3f0b098b68",
+      "bytes": 13792,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_stomach cancer.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/test/test_systemic lupus erythematosus.csv": {
+      "sha256": "47586695f38912aa544ebea2d27decde480ed0911276cbc1282d4c41efa33db7",
+      "bytes": 14292,
+      "rows": 1,
+      "columns": 978,
+      "header": true,
+      "scenario": "patient",
+      "role": "test",
+      "source": "/root/autodl-tmp/CREED/test_systemic lupus erythematosus.csv",
+      "transformation": "none; exact byte copy",
+      "expression_offset": 0
+    },
+    "data/patient/known_ligands/source_Alzheimer.csv": {
+      "sha256": "8cd129002cea34873931769bf294dd994c3b276c6609ce0211345547e860bc86",
+      "bytes": 325,
+      "rows": 5,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_Alzheimer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_atopic dermatitis.csv": {
+      "sha256": "1d772c65142138d8669533235ea5c545d7b1d4aaa79404f395f0e6dabdeda556",
+      "bytes": 5927,
+      "rows": 76,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_atopic dermatitis.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_breast cancer.csv": {
+      "sha256": "a1693988659979984da8a46506c35c7472d5e854bdddf32eb32849748fda5017",
+      "bytes": 14284,
+      "rows": 153,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_breast cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_chronic myeloid leukemia.csv": {
+      "sha256": "8d0cd49a174976d4e93fc1a911c03b1525cc5e69795fa98a7ada42286669b349",
+      "bytes": 3579,
+      "rows": 36,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_chronic myeloid leukemia.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_colorectal cancer.csv": {
+      "sha256": "14ba3e5042e3b1021b9a5f781faeb362ba338ec2346e1138ed3eef24e9faa9f8",
+      "bytes": 2723,
+      "rows": 35,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_colorectal cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_endometrial cancer.csv": {
+      "sha256": "4edc18d868817d062301a86cc52010873886b4d6d89c07f7fa033231b6df935d",
+      "bytes": 2537,
+      "rows": 27,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_endometrial cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_liver cirrhosis.csv": {
+      "sha256": "5131c73e4af4e758014496b7efd6b5d59d5fd76e2f020cc16584b013e4696dee",
+      "bytes": 4610,
+      "rows": 49,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_liver cirrhosis.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_ovarian.csv": {
+      "sha256": "cb745b217bd34788e0999a9d9fd61f541446c77f240fac5b6aaeee4ab020948b",
+      "bytes": 2043,
+      "rows": 23,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_ovarian.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_pancreatic cancer.csv": {
+      "sha256": "c8cba5b12c3bf2ef6102d996c65840a70c04da29e6bd349e87960640155c89ce",
+      "bytes": 1505,
+      "rows": 13,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_pancreatic cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_prostate cancer.csv": {
+      "sha256": "866aa4bb6f549881af75d2cc59b422054117de5f29e8a24eccf57bd4158f7bb7",
+      "bytes": 5216,
+      "rows": 55,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_prostate cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_stomach cancer.csv": {
+      "sha256": "a130955c864bd7177875243db751ff3bef483cf0b01723b8fc606095629800bb",
+      "bytes": 3120,
+      "rows": 32,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_stomach cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/source_systemic lupus erythematosus.csv": {
+      "sha256": "f3983f6e9559b5cf575e5ba9f8894c9019370a96de55b08c1330a0fc08c9d3ee",
+      "bytes": 1105,
+      "rows": 10,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/new_ligands/source_systemic lupus erythematosus.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "historical_generation_default"
+    },
+    "data/patient/known_ligands/alternate_collection/source_Alzheimer.csv": {
+      "sha256": "f8ca686bb9a77cbb5f33c61a615fbe7bdd8414b57768d14c046d4ebac344b254",
+      "bytes": 367,
+      "rows": 4,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_Alzheimer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_atopic dermatitis.csv": {
+      "sha256": "50af86928b780fbc75e103cff2cb8cdf090943363493dcea8f5070f4d674c0b3",
+      "bytes": 5146,
+      "rows": 76,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_atopic dermatitis.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_breast cancer.csv": {
+      "sha256": "d23417891b085764a3bc075972f3331ab6efe08c5ce2c4bde72aa391f701dcc1",
+      "bytes": 26730,
+      "rows": 309,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_breast cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_chronic myeloid leukemia.csv": {
+      "sha256": "080961b6ca3083c26d3fa691461dfa73c01b0e246caebea256c884458fa87866",
+      "bytes": 30448,
+      "rows": 331,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_chronic myeloid leukemia.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_colorectal cancer.csv": {
+      "sha256": "5d1d1d32ff1592958d21287d6a68d2fac21b6add617a8f1fafd8f918a38414dc",
+      "bytes": 25116,
+      "rows": 288,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_colorectal cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_endometrial cancer.csv": {
+      "sha256": "bbbc1861c2837314f06b0b11315303887e2b713b50d8585f194a538fe68ee62e",
+      "bytes": 25492,
+      "rows": 293,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_endometrial cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_gastric.csv": {
+      "sha256": "619b76f219c7fe5f19b27549bc8ad4c24e2fe4ea005f72546a6588db60180920",
+      "bytes": 7422,
+      "rows": 81,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_gastric.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_liver cirrhosis.csv": {
+      "sha256": "363b80fe7a788bb7c28c2ba3a1e4866658541907678bfd030a1b572783975a25",
+      "bytes": 19765,
+      "rows": 235,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_liver cirrhosis.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_ovarian.csv": {
+      "sha256": "c915eabf9be729943b8e5cd92557edfdd18a2aa6bab35514a2cce85f58ea344e",
+      "bytes": 4042,
+      "rows": 39,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_ovarian.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_pancreatic cancer.csv": {
+      "sha256": "73dc06b391a856dc3147e0ebe262981b109452cb10499195c418567daa4cb3eb",
+      "bytes": 29384,
+      "rows": 323,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_pancreatic cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_prostate cancer.csv": {
+      "sha256": "d2f8feebd467dedd8093d7d2937598b220cdb7ea6a6f0c926fa534c1a19fdef1",
+      "bytes": 26481,
+      "rows": 305,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_prostate cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_stomach cancer.csv": {
+      "sha256": "b808245257d718b043199c28e46a2bc683efea6b098c4f37cc6b056ba5848fae",
+      "bytes": 28271,
+      "rows": 330,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_stomach cancer.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    },
+    "data/patient/known_ligands/alternate_collection/source_systemic lupus erythematosus.csv": {
+      "sha256": "20329cd6c8583d5067f96cd257bf76434c70aecdf4376f9c9dbc89da80a72d87",
+      "bytes": 41250,
+      "rows": 428,
+      "columns": 3,
+      "header": false,
+      "scenario": "patient",
+      "role": "known_ligands",
+      "source": "/root/autodl-tmp/CREED/ligands/source_systemic lupus erythematosus.csv",
+      "transformation": "none; exact byte copy",
+      "collection": "alternate_collection_not_automatically_substituted"
+    }
+  },
+  "scenarios": {
+    "targets": {
+      "test_dir": "data/targets/test",
+      "known_ligands_dir": "data/targets/known_ligands",
+      "test_files": 10,
+      "known_ligand_files": 10
+    },
+    "sciplex3": {
+      "test_dir": "data/sciplex3/test",
+      "known_ligands_dir": "data/sciplex3/known_ligands",
+      "test_files": 3,
+      "known_ligand_files": 3,
+      "known_ligand_definition": "Paired perturbing molecule in each non-control test row"
+    },
+    "patient": {
+      "test_dir": "data/patient/test",
+      "known_ligands_dir": "data/patient/known_ligands",
+      "test_files": 13,
+      "known_ligand_files": 12,
+      "alternate_ligands_dir": "data/patient/known_ligands/alternate_collection",
+      "alternate_ligand_files": 13,
+      "missing_default_ligands": [
+        "gastric"
+      ]
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "reference": {
+    "asset": "tx2mol-reference-checkpoints.tar.gz",
+    "sha256": "48c5c6bc22dbe2e30519627f44d7e824f85ae60a62411527a171c9f7af511f63",
+    "bytes": 1132134260,
+    "files": {
+      "checkpoints/reference/tx2mol/args.json": {
+        "sha256": "c1f8d35343091b20b530d1365c5afad7a3d24e8221d775dd66060fb0370f5012",
+        "bytes": 962
+      },
+      "checkpoints/reference/tx2mol/best_metrics.json": {
+        "sha256": "a38cd2b878d57bebb68e552dc817949052d226847c4bf4b2b111b361035e6309",
+        "bytes": 220
+      },
+      "checkpoints/reference/tx2mol/config.json": {
+        "sha256": "810943b0af8b0f8d0c6b376dc98b795bee6cafd2dda437e48e598c4d4d6b080f",
+        "bytes": 965
+      },
+      "checkpoints/reference/tx2mol/ge_projection.pt": {
+        "sha256": "93ef763d34dde7f30e78dd259a7579a20a1774e912f649fc221ddc700b1d7939",
+        "bytes": 2609476
+      },
+      "checkpoints/reference/tx2mol/modeling_novomolgen.py": {
+        "sha256": "a1d0142725f7c836b0e54a482b45c7e535e89b157ac6467e9c434630232a8667",
+        "bytes": 14228
+      },
+      "checkpoints/reference/tx2mol/pytorch_model.bin": {
+        "sha256": "e0f8a688857004f6291642c1322527e3358905e3a4658a7fc6c2d61f0376fd47",
+        "bytes": 1208773654
+      },
+      "checkpoints/reference/tx2mol/special_tokens_map.json": {
+        "sha256": "db82f8bd9b25d14f9c788e6bde64de84d42f1c2538f1c245ba6cb3e872d14b18",
+        "bytes": 555
+      },
+      "checkpoints/reference/tx2mol/tokenizer.json": {
+        "sha256": "447b78b794dc4c3906281a13857f7202fcbe82f17cfe2a5d947af4cc29dd4544",
+        "bytes": 3662
+      },
+      "checkpoints/reference/tx2mol/tokenizer_config.json": {
+        "sha256": "d83cf3df2f4567f89fe50fa6d6c36f832258f6920d41668eb4d48e8410835a13",
+        "bytes": 943
+      },
+      "checkpoints/reference/gene_vae.pt": {
+        "sha256": "2bcc46ff71ebbfba65ef17d20a301680be5c579bf05495f2fd6d84e87d224a7e",
+        "bytes": 5433553
+      }
+    }
+  },
+  "base": {
+    "asset": "novomolgen-300m-base.tar.gz",
+    "sha256": "ed7c18bee9355b0d859457fb1317ea7c643241975f4e628ebffabc5a4a8a846b",
+    "bytes": 629633941,
+    "upstream": "chandar-lab/NovoMolGen_300M_SMILES_AtomWise",
+    "files": {
+      "pretrained/novomolgen/README.md": {
+        "sha256": "46620c269be2c7e3f4a7688c5f570c2bb545c91722dfcc232135ccc8c6969e95",
+        "bytes": 2680
+      },
+      "pretrained/novomolgen/config.json": {
+        "sha256": "eacc085b603a2d86975a370897cff48a48ff5dfcbb6d16544b27759e97b1b7bc",
+        "bytes": 865
+      },
+      "pretrained/novomolgen/generation_config.json": {
+        "sha256": "2c13e64df63c6cd0a5e174a177c222bef64892a42105fe9f92ef6f0e59502308",
+        "bytes": 132
+      },
+      "pretrained/novomolgen/modeling_novomolgen.py": {
+        "sha256": "a1d0142725f7c836b0e54a482b45c7e535e89b157ac6467e9c434630232a8667",
+        "bytes": 14228
+      },
+      "pretrained/novomolgen/pytorch_model.bin": {
+        "sha256": "6149e167f5797173f70c6defc0bd585556889eb7a9d232d12d8dcea575475838",
+        "bytes": 1208773654
+      },
+      "pretrained/novomolgen/special_tokens_map.json": {
+        "sha256": "db82f8bd9b25d14f9c788e6bde64de84d42f1c2538f1c245ba6cb3e872d14b18",
+        "bytes": 555
+      },
+      "pretrained/novomolgen/tokenizer.json": {
+        "sha256": "4baa7905f4431811d024de231313a4935a28575f84d08793b2d258a0d6a419cd",
+        "bytes": 3564
+      },
+      "pretrained/novomolgen/tokenizer_config.json": {
+        "sha256": "d83cf3df2f4567f89fe50fa6d6c36f832258f6920d41668eb4d48e8410835a13",
+        "bytes": 943
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+Cc1c(C)c2c(c(C)c1O)CC[C@@](C)(CCC[C@H](C)CCC[C@H](C)CCCC(C)C)O2,DB00163,Vitamin E
+COc1ccc(-c2ccc3cc(C(=O)O)ccc3c2)cc1C12CC3CC(CC(C3)C1)C2,DB00210,Adapalene
+Nc1ccc(O)c(C(=O)O)c1,DB00244,Mesalazine
+Cn1c(=O)c2[nH]cnc2n(C)c1=O,DB00277,Theophylline
+O=c1[nH]c(=O)n([C@H]2C[C@H](O)[C@@H](CO)O2)cc1C(F)(F)F,DB00432,Trifluridine
+CC[C@]1(O)C[C@@H]2CN(CCc3c([nH]c4ccccc34)[C@@](C(=O)OC)(c3cc4c(cc3OC)N(C)[C@H]3[C@@](O)(C(=O)OC)[C@H](OC(C)=O)[C@]5(CC)C=CCN6CC[C@]43[C@@H]65)C2)C1,DB00570,Vinblastine
+Nc1nc2c(c(=O)[nH]1)N(C=O)C(CNc1ccc(C(=O)N[C@@H](CCC(=O)O)C(=O)O)cc1)CN2,DB00650,Leucovorin
+CCN(CC)CCOC(=O)c1ccc(N)cc1,DB00721,Procaine
+CCc1c2c(nc3ccc(OC(=O)N4CCC(N5CCCCC5)CC4)cc13)-c1cc3c(c(=O)n1C2)COC(=O)[C@]3(O)CC,DB00762,Irinotecan
+Nc1ncn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1,DB00928,Azacitidine
+CCCCC1=NC2(CCCC2)C(=O)N1Cc1ccc(-c2ccccc2-c2nn[nH]n2)cc1,DB01029,Irbesartan
+CCN(CC)CCNC(=O)c1ccc(N)cc1,DB01035,Procainamide
+Nc1[nH]c(=O)ncc1F,DB01099,Flucytosine
+CCCCCOC(=O)Nc1nc(=O)n([C@@H]2O[C@H](C)[C@@H](O)[C@H]2O)cc1F,DB01101,Capecitabine
+COc1cc(NCc2ccc3nc(N)nc(N)c3c2C)cc(OC)c1OC,DB01157,Trimetrexate
+O=[As]O[As]=O,DB01169,Arsenic trioxide
+Nc1ncn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1,DB01262,Decitabine
+Nc1ccc(/N=N/c2ccccc2)c(N)n1,DB01438,Phenazopyridine
+C[C@@H]1CCN(C(=O)CC#N)C[C@@H]1N(C)c1ncnc2[nH]ccc12,DB08895,Tofacitinib
+CNC(=O)c1cc(Oc2ccc(NC(=O)Nc3ccc(Cl)c(C(F)(F)F)c3)c(F)c2)ccn1,DB08896,Regorafenib
+CC(=O)Nc1cccc(-n2c(=O)n(C3CC3)c(=O)c3c(Nc4ccc(I)cc4F)n(C)c(=O)c(C)c32)c1,DB08911,Trametinib
+CC(C)(C)c1nc(-c2cccc(NS(=O)(=O)c3c(F)cccc3F)c2F)c(-c2ccnc(N)n2)s1,DB08912,Dabrafenib
+O=c1[nH]c(=O)n(C2CCCO2)cc1F,DB09256,Tegafur
+N=C1CCCN1Cc1[nH]c(=O)[nH]c(=O)c1Cl,DB09343,Tipiracil
+Nc1nc(=O)c2c([nH]1)NC[C@H](CNc1ccc(C(=O)N[C@@H](CCC(=O)O)C(=O)O)cc1)N2C=O,DB11596,Levoleucovorin
+Cc1cc(Nc2ncnc3ccc(NC4=NC(C)(C)CO4)cc23)ccc1Oc1ccn2ncnc2c1,DB11652,Tucatinib
+CNC(=O)c1c(C)oc2cc(Oc3ncnc4cc(OC)c(OC)cc34)ccc12,DB11679,Fruquintinib
+COC(=O)N[C@@H](C)CNc1nccc(-c2cn(C(C)C)nc2-c2cc(Cl)cc(NS(C)(=O)=O)c2F)n1,DB11718,Encorafenib
+COc1cc(Nc2ncc(F)c(Nc3ccc4c(n3)N(COP(=O)(O)O)C(=O)C(C)(C)O4)n2)cc(OC)c1OC,DB12010,Fostamatinib
+Cc1nc(NC(=O)N2CCC[C@H]2C(N)=O)sc1-c1ccnc(C(C)(C)C(F)(F)F)c1,DB12015,Alpelisib
+[90Y],DB13076,Yttrium Y-90
+CC(=O)Oc1c(C)c(C)c2c(c1C)CC[C@@](C)(CCC[C@H](C)CCC[C@H](C)CCCC(C)C)O2,DB14002,D-alpha-Tocopherol acetate
+C=C(F)C(=O)N1CCN(c2nc(OC[C@@H]3CCCN3C)nc3c2CCN(c2cccc4cccc(Cl)c24)C3)C[C@@H]1CC#N,DB15568,Adagrasib
+C=CC(=O)N1CCN(c2nc(=O)n(-c3c(C)ccnc3C(C)C)c3nc(-c4c(O)cccc4F)c(F)cc23)[C@@H](C)C1,DB15569,Sotorasib
+O=C([O-])CCc1ccc(O)c(CN(CCN(CC(=O)[O-])Cc2cc(CCC(=O)NCCCCCC(=O)NCCCC[C@H](NC(=O)N[C@@H](CCC(=O)O)C(=O)O)C(=O)O)ccc2O)CC(=O)[O-])c1.[68Ga+3],DB16019,Gallium Ga-68 gozetotide

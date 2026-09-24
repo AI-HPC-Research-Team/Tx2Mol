@@ -1,0 +1,19 @@
+{
+  "data_path": "data/train.csv.gz",
+  "output_dir": "outputs/gene_vae",
+  "epochs": 2000,
+  "batch_size": 64,
+  "lr": 0.0001,
+  "seed": 0,
+  "gene_num": 978,
+  "hidden_sizes": [512, 256, 128],
+  "latent_size": 64,
+  "dropout": 0.2,
+  "alpha_start": 0.99,
+  "alpha_end": 0.5,
+  "beta": 1.0,
+  "device": "auto",
+  "metadata_columns": "3",
+  "csv_header": "none",
+  "gene_order_path": "data/gene_order.json"
+}
