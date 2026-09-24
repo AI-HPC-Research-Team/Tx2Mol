@@ -1,6 +1,6 @@
 # Maintaining this release
 
-The public repository is [Yaxin-Xu/Tx2Mol](https://github.com/Yaxin-Xu/Tx2Mol). Users should start with the [README tutorial](README.md), which covers environment setup, GeneVAE pretraining, Tx2Mol post-training, and ten-target generation.
+The public repository is [Yaxin-Xu/Tx2Mol](https://github.com/Yaxin-Xu/Tx2Mol). Users should start with the [README quick start](README.md). The [full reproduction tutorial](docs/TUTORIAL.md) covers environment setup, GeneVAE pretraining, Tx2Mol post-training, and ten-target generation in detail.
 
 ## Repository files and model assets
 
