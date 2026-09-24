@@ -271,21 +271,9 @@ Match the intended biological protocol and expression scale before running. The 
 
 | Problem | What to check |
 | --- | --- |
-| Missing reference model or projection | Run the `--reference` asset command in section 2 from the repository root. For fresh training, install `--base`. |
-| FlashAttention build/import error | Check Python, PyTorch CUDA, `nvcc --version`, and GPU capability. Rerun `bash scripts/install.sh`; use `MAX_JOBS=2 bash scripts/install.sh` if compilation exhausts RAM. |
-| CUDA out of memory | Reduce generation `--batch_size`, or training `--batch_size` and adjust `--grad_accum`. Record the change because numerical results can differ. |
-| Existing output directory | Use a fresh `--output_dir` and update dependent model paths consistently. |
-| GeneVAE hash mismatch | Load the GeneVAE paired with that Tx2Mol projection, or reinstall the reference asset. |
-| Input shape, gene order, or cell-line error | Compare with `data/gene_order.json` and the model's cell mapping; do not feed a SciPlex3 matrix to the target loader. |
-| Compute node cannot download weights | Download the named archives from [v1.0](https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0), copy them to the node, and use the local-asset command below. |
-
-```bash
-# Install the reference archive from a local directory:
-python scripts/prepare_assets.py --assets_dir /path/to/release-assets --reference
-
-# Install both workflows if both archives are present:
-python scripts/prepare_assets.py --assets_dir /path/to/release-assets --all
-```
+| Environment or FlashAttention errors | Use the pinned environment in [section 1](#1-install-the-environment) and rerun `bash scripts/install.sh`. |
+| CUDA out of memory | Reduce `--batch_size`. During post-training, adjust `--grad_accum` to preserve the effective batch size. |
+| Checkpoint loading errors | Check model paths, install the required weights from sections 2 or 4, and use the GeneVAE paired with the Tx2Mol checkpoint. |
 
 ## Reproducibility records
 
