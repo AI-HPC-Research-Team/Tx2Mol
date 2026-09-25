@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="252" viewBox="0 0 1000 252" role="img" aria-labelledby="title desc">
+  <title id="title">Tx2Mol — from gene expression to molecular design</title>
+  <desc id="desc">Three stages: GeneVAE pretraining, Tx2Mol post-training, and phenotype-guided SMILES generation. Decorative particles move gently along the connections.</desc>
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#56d1c4"/><stop offset="1" stop-color="#ffab92"/></linearGradient>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#385e68" opacity=".48"/></pattern>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
+    .cell { animation: breathe 5s ease-in-out infinite; }
+    .packet { animation: travel 4.8s ease-in-out infinite; }
+    .packet.second { animation-delay: -2.4s; }
+    .halo { transform-box: fill-box; transform-origin: center; animation: halo 5s ease-in-out infinite; }
+    .float { animation: float 6s ease-in-out infinite; }
+    @keyframes breathe { 0%, 100% { opacity: .4; } 50% { opacity: .95; } }
+    @keyframes travel { 0%, 12% { transform: translateX(0); opacity: 0; } 25% { opacity: 1; } 75% { opacity: 1; } 88%, 100% { transform: translateX(36px); opacity: 0; } }
+    @keyframes halo { 0%, 100% { opacity: .24; transform: scale(.92); } 50% { opacity: .55; transform: scale(1.12); } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @media (prefers-reduced-motion: reduce) { .cell, .packet, .halo, .float { animation: none; } }
+  </style>
+  <rect x="1" y="1" width="998" height="250" rx="20" fill="#101e27" stroke="#2a4651"/>
+  <rect x="22" y="18" width="956" height="109" rx="12" fill="url(#dots)"/>
+  <path d="M36 126 H964" stroke="#2a4651"/>
+  <g fill="none" stroke="#56d1c4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M49 49 L66 39 L83 49 V69 L66 79 L49 69 Z"/>
+    <path d="M83 49 L100 39 M49 69 L34 78 M83 69 L99 78" stroke="#385e68"/>
+    <circle cx="66" cy="39" r="4" fill="#101e27"/>
+    <circle cx="83" cy="69" r="4" fill="#ffab92" stroke="#ffab92"/>
+  </g>
+  <text x="119" y="70" font-size="43" font-weight="750" letter-spacing="-1.5" fill="#e7f3f5">Tx<tspan fill="#56d1c4">2</tspan>Mol</text>
+  <text x="121" y="98" font-size="16" fill="#a0bcc4">From gene expression to molecular design</text>
+  <g class="float" fill="none" stroke-width="2">
+    <path d="M660 70 H690 L701 51 L714 89 L727 61 L739 76 H770" stroke="#56d1c4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M789 70 H831" stroke="#385e68" stroke-dasharray="3 6"/>
+    <path d="M873 49 L893 60 V83 L873 95 L853 83 V60 Z M893 60 L913 48 M893 83 L913 95" stroke="#56d1c4"/>
+    <circle class="halo" cx="873" cy="72" r="31" stroke="#56d1c4"/>
+    <circle cx="913" cy="48" r="4" fill="#ffab92" stroke="#ffab92"/>
+    <circle cx="853" cy="83" r="4" fill="#56d1c4" stroke="#56d1c4"/>
+  </g>
+  <rect x="28" y="145" width="287" height="81" rx="12" fill="#172d36" stroke="#2a4651"/>
+  <rect x="356" y="145" width="287" height="81" rx="12" fill="#172d36" stroke="#2a4651"/>
+  <rect x="684" y="145" width="288" height="81" rx="12" fill="#172d36" stroke="#2a4651"/>
+  <rect class="cell" x="46" y="174" width="6" height="6" rx="1.5" fill="#ffab92" opacity="0.32" style="animation-delay:-0.00s"/><rect class="cell" x="55" y="174" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.54" style="animation-delay:-0.24s"/><rect class="cell" x="64" y="174" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.76" style="animation-delay:-0.48s"/><rect class="cell" x="73" y="174" width="6" height="6" rx="1.5" fill="#ffab92" opacity="0.32" style="animation-delay:-0.72s"/><rect class="cell" x="82" y="174" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.54" style="animation-delay:-0.96s"/><rect class="cell" x="46" y="183" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.65" style="animation-delay:-0.45s"/><rect class="cell" x="55" y="183" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.87" style="animation-delay:-0.69s"/><rect class="cell" x="64" y="183" width="6" height="6" rx="1.5" fill="#ffab92" opacity="0.43" style="animation-delay:-0.93s"/><rect class="cell" x="73" y="183" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.65" style="animation-delay:-1.17s"/><rect class="cell" x="82" y="183" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.87" style="animation-delay:-1.41s"/><rect class="cell" x="46" y="192" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.32" style="animation-delay:-0.90s"/><rect class="cell" x="55" y="192" width="6" height="6" rx="1.5" fill="#ffab92" opacity="0.54" style="animation-delay:-1.14s"/><rect class="cell" x="64" y="192" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.76" style="animation-delay:-1.38s"/><rect class="cell" x="73" y="192" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.32" style="animation-delay:-1.62s"/><rect class="cell" x="82" y="192" width="6" height="6" rx="1.5" fill="#ffab92" opacity="0.54" style="animation-delay:-1.86s"/><rect class="cell" x="46" y="201" width="6" height="6" rx="1.5" fill="#ffab92" opacity="0.65" style="animation-delay:-1.35s"/><rect class="cell" x="55" y="201" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.87" style="animation-delay:-1.59s"/><rect class="cell" x="64" y="201" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.43" style="animation-delay:-1.83s"/><rect class="cell" x="73" y="201" width="6" height="6" rx="1.5" fill="#ffab92" opacity="0.65" style="animation-delay:-2.07s"/><rect class="cell" x="82" y="201" width="6" height="6" rx="1.5" fill="#56d1c4" opacity="0.87" style="animation-delay:-2.31s"/>
+  <text x="104" y="177" font-size="18" font-weight="650" fill="#e7f3f5">GeneVAE</text>
+  <text x="104" y="202" font-size="14" fill="#a0bcc4">Gene expression pretraining</text>
+  <g stroke="#385e68" stroke-width="1.5">
+    <path d="M382 174 L405 181 L428 174 M382 201 L405 181 L428 201 M382 187 L405 199 L428 187" fill="none"/>
+  </g>
+  <g fill="#56d1c4"><circle cx="382" cy="174" r="3.5"/><circle cx="382" cy="187" r="3.5"/><circle cx="382" cy="201" r="3.5"/><circle cx="405" cy="181" r="4.5"/><circle cx="405" cy="199" r="4.5"/><circle cx="428" cy="174" r="3.5"/><circle cx="428" cy="187" r="3.5"/><circle cx="428" cy="201" r="3.5"/></g>
+  <text x="447" y="177" font-size="18" font-weight="650" fill="#e7f3f5">Tx2Mol</text>
+  <text x="447" y="202" font-size="14" fill="#a0bcc4">Conditional post-training</text>
+  <g fill="none" stroke="#56d1c4" stroke-width="2" stroke-linejoin="round">
+    <path d="M722 173 L737 182 V199 L722 208 L707 199 V182 Z M737 182 L750 175"/>
+    <circle cx="750" cy="175" r="3.5" fill="#ffab92" stroke="#ffab92"/>
+  </g>
+  <text x="774" y="177" font-size="18" font-weight="650" fill="#e7f3f5">SMILES generation</text>
+  <text x="774" y="202" font-size="14" fill="#a0bcc4">Guided by phenotype</text>
+  <g stroke="#385e68" stroke-width="1.5" fill="none"><path d="M319 185 H351 M347 181 L351 185 L347 189"/><path d="M647 185 H679 M675 181 L679 185 L675 189"/></g>
+  <circle class="packet" cx="318" cy="185" r="3" fill="#56d1c4"/>
+  <circle class="packet second" cx="646" cy="185" r="3" fill="#ffab92"/>
+  <rect x="35" y="239" width="930" height="2" rx="1" fill="url(#accent)" opacity=".55"/>
+</svg>

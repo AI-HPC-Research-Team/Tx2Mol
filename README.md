@@ -1,12 +1,32 @@
-# Tx2Mol
+<h1 align="center">Tx2Mol</h1>
 
-Phenotype-driven de novo molecular design from gene expression signatures.
+<p align="center">
+  <strong>Phenotype-driven de novo molecular design from gene expression signatures.</strong>
+</p>
 
-```text
-GeneVAE pretraining -> Tx2Mol post-training -> phenotype-guided SMILES generation
-```
+<p align="center">
+  <a href="environment.yml"><img src="https://img.shields.io/badge/Python-3.10-397C91?style=flat-square&amp;logo=python&amp;logoColor=white" alt="Python 3.10" /></a>
+  <a href="scripts/install.sh"><img src="https://img.shields.io/badge/PyTorch-2.1.2-D87862?style=flat-square&amp;logo=pytorch&amp;logoColor=white" alt="PyTorch 2.1.2" /></a>
+  <a href="environment.yml"><img src="https://img.shields.io/badge/CUDA-11.8-54866B?style=flat-square&amp;logo=nvidia&amp;logoColor=white" alt="CUDA 11.8" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/Code-MIT-597080?style=flat-square" alt="Code license: MIT" /></a>
+</p>
 
-Start with the commands below. The [full reproduction tutorial](docs/TUTORIAL.md) explains parameters, outputs, custom inputs, and repeated runs.
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark) and (max-width: 720px)" srcset="assets/readme/overview-mobile-dark.svg" />
+    <source media="(max-width: 720px)" srcset="assets/readme/overview-mobile-light.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/overview-dark.svg" />
+    <img src="assets/readme/overview-light.svg" width="1000" alt="Tx2Mol pipeline: GeneVAE pretraining, Tx2Mol post-training, and phenotype-guided SMILES generation." />
+  </picture>
+</p>
+
+<p align="center">
+  <a href="#2-quick-start-use-the-released-checkpoint">🚀&nbsp;<strong>Quick&nbsp;start</strong></a> &nbsp; · &nbsp;
+  <a href="docs/TUTORIAL.md">📖&nbsp;<strong>Tutorial</strong></a> &nbsp; · &nbsp;
+  <a href="data/README.md">🧬&nbsp;<strong>Datasets</strong></a> &nbsp; · &nbsp;
+  <a href="https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0">📦&nbsp;<strong>Checkpoints</strong></a> &nbsp; · &nbsp;
+  <a href="docs/METHODS.md">🔬&nbsp;<strong>Methods</strong></a>
+</p>
 
 ## 1. Install the environment
 
@@ -89,8 +109,13 @@ Shared training data are under `data/`. The `targets/`, `sciplex3/`, and `patien
 
 ## 7. Troubleshooting
 
+<details>
+<summary>🔧 Common issues and fixes</summary>
+
 | Problem | Solution |
 | --- | --- |
 | Environment or FlashAttention errors | Use the pinned environment and rerun `bash scripts/install.sh`. |
 | CUDA out of memory | Reduce `--batch_size`; adjust `--grad_accum` during post-training. |
 | Checkpoint loading errors | Check model paths and use the GeneVAE paired with the Tx2Mol checkpoint. |
+
+</details>
