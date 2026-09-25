@@ -13,7 +13,7 @@ The reference asset contains the original epoch-9 Tx2Mol model, projection, toke
 - Validate dimensions, gene order, cell labels, and chemistry dependencies; support gzip inputs and record seeds, settings, hashes, and raw outputs.
 - Use stable metric ordering, the executed clipping norm of 1.0, and explicit autocast. Fresh optimization is not guaranteed to be bitwise equivalent to historical runs.
 
-The historical BOS-embedding InfoNCE fallback remains as described in [Methods](METHODS.md#historical-infonce-limitation). The independent compound–phenotype compatibility predictor is outside this three-stage release.
+The independent compound–phenotype compatibility predictor is outside this three-stage release.
 
 ## Evaluation provenance
 

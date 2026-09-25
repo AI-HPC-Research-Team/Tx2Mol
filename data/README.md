@@ -51,7 +51,7 @@ The same 12 file stems are used in `test/test_DISEASE.csv`, `known_ligands/sourc
 | Pancreatic cancer | `pancreatic cancer` |
 | Prostate cancer | `prostate cancer` |
 | Stomach cancer | `stomach cancer` |
-| Systemic lupus erythematosus | `systemic lupus erythematosus` |
+| Lupus erythematosus | `lupus erythematosus` |
 
 The additional historical `gastric` entry is excluded; the heatmap's `stomach cancer` input and ligands are retained under their original names.
 

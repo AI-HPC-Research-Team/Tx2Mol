@@ -110,7 +110,7 @@ python -m tx2mol.generate --config configs/generate.json
 
 Loads the selected checkpoint and its paired GeneVAE, then generates and evaluates the ten-target example under `outputs/targets/`.
 
-The defaults connect all three stages. After installing the base asset, `bash scripts/run_all.sh` runs them in sequence. Architecture, hyperparameters, and the retained [InfoNCE limitation](METHODS.md#historical-infonce-limitation) are documented in [Methods](METHODS.md); editable settings are in [configs](../configs/).
+The defaults connect all three stages. After installing the base asset, `bash scripts/run_all.sh` runs them in sequence. Architecture, training settings, and evaluation definitions are documented in [Methods](METHODS.md); editable settings are in [configs](../configs/).
 
 ### Repeat an experiment in a separate directory
 

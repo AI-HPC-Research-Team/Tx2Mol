@@ -585,7 +585,7 @@
       "transformation": "none; exact byte copy",
       "expression_offset": 0
     },
-    "data/patient/test/test_systemic lupus erythematosus.csv": {
+    "data/patient/test/test_lupus erythematosus.csv": {
       "sha256": "47586695f38912aa544ebea2d27decde480ed0911276cbc1282d4c41efa33db7",
       "bytes": 14292,
       "rows": 1,
@@ -594,7 +594,7 @@
       "scenario": "patient",
       "role": "test",
       "source": "/root/autodl-tmp/CREED/test_systemic lupus erythematosus.csv",
-      "transformation": "none; exact byte copy",
+      "transformation": "filename relabeled; content unchanged (exact byte copy)",
       "expression_offset": 0
     },
     "data/patient/known_ligands/source_Alzheimer.csv": {
@@ -729,7 +729,7 @@
       "transformation": "none; exact byte copy",
       "collection": "historical_generation_default"
     },
-    "data/patient/known_ligands/source_systemic lupus erythematosus.csv": {
+    "data/patient/known_ligands/source_lupus erythematosus.csv": {
       "sha256": "f3983f6e9559b5cf575e5ba9f8894c9019370a96de55b08c1330a0fc08c9d3ee",
       "bytes": 1105,
       "rows": 10,
@@ -738,7 +738,7 @@
       "scenario": "patient",
       "role": "known_ligands",
       "source": "/root/autodl-tmp/CREED/new_ligands/source_systemic lupus erythematosus.csv",
-      "transformation": "none; exact byte copy",
+      "transformation": "filename relabeled; content unchanged (exact byte copy)",
       "collection": "historical_generation_default"
     },
     "data/patient/known_ligands/alternate_collection/source_Alzheimer.csv": {
@@ -873,7 +873,7 @@
       "transformation": "none; exact byte copy",
       "collection": "alternate_collection_not_automatically_substituted"
     },
-    "data/patient/known_ligands/alternate_collection/source_systemic lupus erythematosus.csv": {
+    "data/patient/known_ligands/alternate_collection/source_lupus erythematosus.csv": {
       "sha256": "20329cd6c8583d5067f96cd257bf76434c70aecdf4376f9c9dbc89da80a72d87",
       "bytes": 41250,
       "rows": 428,
@@ -882,7 +882,7 @@
       "scenario": "patient",
       "role": "known_ligands",
       "source": "/root/autodl-tmp/CREED/ligands/source_systemic lupus erythematosus.csv",
-      "transformation": "none; exact byte copy",
+      "transformation": "filename relabeled; content unchanged (exact byte copy)",
       "collection": "alternate_collection_not_automatically_substituted"
     }
   },
@@ -920,7 +920,7 @@
         "pancreatic cancer",
         "prostate cancer",
         "stomach cancer",
-        "systemic lupus erythematosus"
+        "lupus erythematosus"
       ],
       "cohort_reference": {
         "source": "12_disease_top_percent_decontaminated.csv",
