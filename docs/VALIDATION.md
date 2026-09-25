@@ -39,4 +39,4 @@ The complete 2,000-epoch GeneVAE and up-to-20-epoch Tx2Mol training runs were no
 - [Integrated execution example](../examples/integrated_generation/): complete outputs and verification report.
 - [Paper-protocol examples](../examples/paper_protocol/): archived inputs, expected scores, and CPU reevaluation commands.
 - [Validation record](../assets/integrated_evaluation_validation.json): comparisons, source hashes, and environment details.
-- [Detailed dated log](https://github.com/Yaxin-Xu/Tx2Mol/blob/673f083119bedaa8e0de807eae39425f4aa3c297/docs/VALIDATION.md): original validation history.
+- [Detailed dated log](https://github.com/AI-HPC-Research-Team/Tx2Mol/blob/673f083119bedaa8e0de807eae39425f4aa3c297/docs/VALIDATION.md): original validation history.

@@ -15,7 +15,7 @@ Use the released checkpoint in section 2, or train a new model in section 4.
 Requires Linux, Conda, Git, and one NVIDIA Ampere-or-newer GPU. The pipeline was tested on an RTX 4090 (24 GB). Reserve at least 10 GB; training checkpoints need additional space. The environment pins Python 3.10, PyTorch 2.1.2, CUDA 11.8, Transformers 4.46.2, and FlashAttention 2.6.1. GeneVAE alone can run on CPU; the full pipeline requires CUDA.
 
 ```bash
-git clone https://github.com/Yaxin-Xu/Tx2Mol.git
+git clone https://github.com/AI-HPC-Research-Team/Tx2Mol.git
 cd Tx2Mol
 conda env create -f environment.yml
 conda activate tx2mol
@@ -35,10 +35,10 @@ Download the epoch-9 Tx2Mol checkpoint and its paired GeneVAE:
 
 ```bash
 python scripts/prepare_assets.py \
-  --github_repo Yaxin-Xu/Tx2Mol --tag v1.0 --reference
+  --github_repo AI-HPC-Research-Team/Tx2Mol --tag v1.0 --reference
 ```
 
-The approximately 1.13 GB archive is downloaded from [Releases](https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0), verified against the weight manifest, and installed under `checkpoints/reference/`.
+The approximately 1.13 GB archive is downloaded from [Releases](https://github.com/AI-HPC-Research-Team/Tx2Mol/releases/tag/v1.0), verified against the weight manifest, and installed under `checkpoints/reference/`.
 
 ### Generate a small example for all ten targets
 
@@ -89,7 +89,7 @@ Download the starting molecular backbone:
 
 ```bash
 python scripts/prepare_assets.py \
-  --github_repo Yaxin-Xu/Tx2Mol --tag v1.0 --base
+  --github_repo AI-HPC-Research-Team/Tx2Mol --tag v1.0 --base
 ```
 
 This installs the approximately 630 MB base asset under `pretrained/novomolgen/`.

@@ -25,4 +25,4 @@ The paper used the separate [historical evaluator](../scripts/evaluate_gxvaes_pr
 
 The processed expression matrices, signatures, and retained ligands preserve their supplied numerical values. Patient data cover the 12 diseases in the updated heatmap. The [data guide](../data/README.md) and [manifest](../assets/data_manifest.json) describe current inputs. Raw LINCS retrieval, upstream normalization, and biological gene-ID alignment code were not available in the supplied entry points.
 
-The original combined ZIP and [packaging records](https://github.com/Yaxin-Xu/Tx2Mol/tree/11f69aa0657033a8b8af421581131c96de519d7f/assets) remain historical snapshots. Clone the current repository for the maintained pipeline; [Release assets](https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0) supply the compatible weights.
+The original combined ZIP and [packaging records](https://github.com/AI-HPC-Research-Team/Tx2Mol/tree/11f69aa0657033a8b8af421581131c96de519d7f/assets) remain historical snapshots. Clone the current repository for the maintained pipeline; [Release assets](https://github.com/AI-HPC-Research-Team/Tx2Mol/releases/tag/v1.0) supply the compatible weights.

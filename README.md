@@ -24,7 +24,7 @@
   <a href="#2-quick-start-use-the-released-checkpoint">🚀&nbsp;<strong>Quick&nbsp;start</strong></a> &nbsp; · &nbsp;
   <a href="docs/TUTORIAL.md">📖&nbsp;<strong>Tutorial</strong></a> &nbsp; · &nbsp;
   <a href="data/README.md">🧬&nbsp;<strong>Datasets</strong></a> &nbsp; · &nbsp;
-  <a href="https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0">📦&nbsp;<strong>Checkpoints</strong></a> &nbsp; · &nbsp;
+  <a href="https://github.com/AI-HPC-Research-Team/Tx2Mol/releases/tag/v1.0">📦&nbsp;<strong>Checkpoints</strong></a> &nbsp; · &nbsp;
   <a href="docs/METHODS.md">🔬&nbsp;<strong>Methods</strong></a>
 </p>
 
@@ -33,7 +33,7 @@
 Requires Linux, Conda, and an NVIDIA Ampere-or-newer GPU. The pipeline was tested on one RTX 4090 (24 GB); the environment pins Python 3.10 and CUDA 11.8.
 
 ```bash
-git clone https://github.com/Yaxin-Xu/Tx2Mol.git
+git clone https://github.com/AI-HPC-Research-Team/Tx2Mol.git
 cd Tx2Mol
 conda env create -f environment.yml
 conda activate tx2mol
@@ -50,14 +50,14 @@ Download the Tx2Mol checkpoint and its matching GeneVAE, then generate a small t
 
 ```bash
 python scripts/prepare_assets.py \
-  --github_repo Yaxin-Xu/Tx2Mol --tag v1.0 --reference
+  --github_repo AI-HPC-Research-Team/Tx2Mol --tag v1.0 --reference
 
 python -m tx2mol.generate --config configs/generate_reference.json \
   --num_runs 1 --num_samples 10 --batch_size 10 \
   --output_dir outputs/reference_demo
 ```
 
-This makes **100 generation attempts** across ten targets. Weights are downloaded from [Releases](https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0) and verified automatically. An [archived execution example](examples/reference_demo/) is included.
+This makes **100 generation attempts** across ten targets. Weights are downloaded from [Releases](https://github.com/AI-HPC-Research-Team/Tx2Mol/releases/tag/v1.0) and verified automatically. An [archived execution example](examples/reference_demo/) is included.
 
 For the full experiment (**10 targets × 10 runs × 100 attempts**), this single command generates, evaluates, and selects the best run for each target:
 
@@ -80,7 +80,7 @@ Install the starting backbone, then run GeneVAE pretraining, Tx2Mol post-trainin
 
 ```bash
 python scripts/prepare_assets.py \
-  --github_repo Yaxin-Xu/Tx2Mol --tag v1.0 --base
+  --github_repo AI-HPC-Research-Team/Tx2Mol --tag v1.0 --base
 
 python -m tx2mol.pretrain --config configs/pretrain.json
 python -m tx2mol.finetune --config configs/finetune.json

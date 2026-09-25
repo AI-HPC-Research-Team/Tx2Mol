@@ -1,12 +1,12 @@
 # Maintaining this release
 
-The public repository is [Yaxin-Xu/Tx2Mol](https://github.com/Yaxin-Xu/Tx2Mol). Users should start with the [README quick start](README.md). The [full reproduction tutorial](docs/TUTORIAL.md) covers environment setup, GeneVAE pretraining, Tx2Mol post-training, and ten-target generation in detail.
+The public repository is [AI-HPC-Research-Team/Tx2Mol](https://github.com/AI-HPC-Research-Team/Tx2Mol). Users should start with the [README quick start](README.md). The [full reproduction tutorial](docs/TUTORIAL.md) covers environment setup, GeneVAE pretraining, Tx2Mol post-training, and ten-target generation in detail.
 
 ## Repository files and model assets
 
 Keep source code, configurations, tests, documentation, and supplied datasets as ordinary files on `main`. Preserve `.gitattributes`: CSV files retain their original bytes so that the data manifest remains valid after cloning. The small reference GeneVAE is tracked in Git.
 
-The large molecular weights are separate assets of [release v1.0](https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0):
+The large molecular weights are separate assets of [release v1.0](https://github.com/AI-HPC-Research-Team/Tx2Mol/releases/tag/v1.0):
 
 | Asset | Purpose |
 | --- | --- |
