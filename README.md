@@ -49,14 +49,10 @@ python -m tx2mol.generate --config configs/generate_reference.json
 
 Results are saved together in `outputs/reference_targets/`:
 
-- `best_max_tanimoto.csv`: **each target's highest maximum Tanimoto across ten runs**, scoring all valid molecules.
+- `best_max_tanimoto.csv`: **each target's highest maximum Tanimoto**, scoring all valid molecules.
 - `best_run_attempts.csv`: all 100 attempts in each winning group, **1,000 attempts total**.
 - `raw_attempts.csv` and `run_max_tanimoto.csv`: all 10,000 attempts and all 100 run scores.
 - `evaluation_summary.json`: the mean of the ten selected target maxima, settings, and checksums.
-
-A [complete 10,000-attempt execution example](examples/integrated_generation/) shows the files produced automatically by this command.
-
-[Recompute the archived results](examples/paper_protocol/) without a GPU: the mean of the ten selected target maxima is **0.9136607 (0.914)**. Fresh samples may differ. See [metric definitions and outputs](docs/TUTORIAL.md#3-read-the-results).
 
 ## 4. Train the three-stage pipeline
 
