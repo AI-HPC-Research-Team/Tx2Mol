@@ -39,18 +39,20 @@ python -m tx2mol.generate --config configs/generate_reference.json \
 
 This makes **100 generation attempts** across ten targets. Weights are downloaded from [Releases](https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0) and verified automatically. An [archived execution example](examples/reference_demo/) is included.
 
-For the full example (**10 targets × 10 runs × 100 attempts**):
+For the full experiment (**10 targets × 10 runs × 100 attempts**), this single command generates, evaluates, and selects the best run for each target:
 
 ```bash
 python -m tx2mol.generate --config configs/generate_reference.json
-python scripts/evaluate_release_attempts.py \
-  --attempts outputs/reference_targets/raw_attempts.csv \
-  --output-dir outputs/reference_targets_evaluation
 ```
 
 ## 3. Read the results
 
-For the full example, read `outputs/reference_targets_evaluation/best_max_tanimoto.csv`: **each target's highest maximum Tanimoto across ten runs**, scoring all valid molecules. `best_run_attempts.csv` contains every attempt in the winning groups. The generator's `raw_attempts.csv` retains all samples; `aggregate_metrics.csv` contains separate across-run diagnostics, including novel-only similarity.
+Results are saved together in `outputs/reference_targets/`:
+
+- `best_max_tanimoto.csv`: **each target's highest maximum Tanimoto across ten runs**, scoring all valid molecules.
+- `best_run_attempts.csv`: all 100 attempts in each winning group, **1,000 attempts total**.
+- `raw_attempts.csv` and `run_max_tanimoto.csv`: all 10,000 attempts and all 100 run scores.
+- `evaluation_summary.json`: the mean of the ten selected target maxima, settings, and checksums.
 
 [Recompute the archived results](examples/paper_protocol/) without a GPU: the mean of the ten selected target maxima is **0.9136607 (0.914)**. Fresh samples may differ. See [metric definitions and outputs](docs/TUTORIAL.md#3-read-the-results).
 
@@ -65,12 +67,9 @@ python scripts/prepare_assets.py \
 python -m tx2mol.pretrain --config configs/pretrain.json
 python -m tx2mol.finetune --config configs/finetune.json
 python -m tx2mol.generate --config configs/generate.json
-python scripts/evaluate_release_attempts.py \
-  --attempts outputs/targets/raw_attempts.csv \
-  --output-dir outputs/targets_evaluation
 ```
 
-The defaults connect all three stages and save generated results under `outputs/targets/`. Keep each Tx2Mol checkpoint paired with the GeneVAE used during its training. See the [training tutorial](docs/TUTORIAL.md#4-train-the-three-stage-pipeline) for hyperparameters, backbone attribution, and implementation details.
+The defaults connect all three stages; generation automatically evaluates and selects the best groups under `outputs/targets/`. Keep each Tx2Mol checkpoint paired with the GeneVAE used during its training. See the [training tutorial](docs/TUTORIAL.md#4-train-the-three-stage-pipeline) for hyperparameters and implementation details.
 
 ## 5. Validate the pipeline
 

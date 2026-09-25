@@ -1,0 +1,32 @@
+{
+  "protocol": "Native generation and reevaluation use the same all-valid maximum Tanimoto scorer.",
+  "tests_passed": 25,
+  "datasets": {
+    "historical": {
+      "runs": 100,
+      "exact_match_to_original_evaluator": true,
+      "max_absolute_difference": 0.0,
+      "mean_of_selected_target_maxima": 0.9136607142857143
+    },
+    "released": {
+      "runs": 100,
+      "exact_match_to_original_evaluator": true,
+      "max_absolute_difference": 0.0,
+      "mean_of_selected_target_maxima": 0.9300271739130433,
+      "complete_winning_attempts_verified": 1000
+    },
+    "fresh_original": {
+      "runs": 100,
+      "exact_match_to_original_evaluator": true,
+      "max_absolute_difference": 0.0,
+      "mean_of_selected_target_maxima": 0.9205116245694605,
+      "complete_winning_attempts_verified": 1000
+    }
+  },
+  "source_sha256": {
+    "tx2mol/generate.py": "36503e916d32f788bda136a528ce3ec8638db480b85652a656a4cfdd4f62f6b4",
+    "tx2mol/evaluate.py": "828836ca20b0b116c773a1feedbe31cf22340a884324abee260067dcc836480c",
+    "tests/test_generate.py": "e903ff430711e1aedee64d0972f8c90791aac069b12455581b7999435a7c182d",
+    "tests/test_paper_evaluation.py": "331e55c5d44c120b13406ec26dedf4f879e3902e011af1bda60b043b7729ead5"
+  }
+}

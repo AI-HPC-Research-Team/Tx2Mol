@@ -26,7 +26,9 @@ These changes improve execution and make known historical differences explicit. 
 
 ## Recovered paper evaluation (2026-09-25)
 
-The paper's maximum Tanimoto table was produced by a separate evaluator, `evaluate_gxvaes_protocol.py`, rather than the generator's inline novelty-filtered metrics. This evaluator already reads training SMILES from the correct column and scores all valid generated molecules. It is included unchanged with SHA256 `1c03c9dc21dae605db1a1920157e249788472d2487cae8cb85b91a822b6b5470`; `evaluate_release_attempts.py` adapts public raw-attempt files and exports the complete winning groups.
+The paper's maximum Tanimoto table was produced by a separate evaluator, `evaluate_gxvaes_protocol.py`, rather than the generator's original inline novelty-filtered metrics. This evaluator already reads training SMILES from the correct column and scores all valid generated molecules. It is included unchanged with SHA256 `1c03c9dc21dae605db1a1920157e249788472d2487cae8cb85b91a822b6b5470` for independent verification.
+
+The maintained pipeline now implements this calculation directly in `tx2mol.evaluate`. `tx2mol.generate` uses the shared scorer during generation and automatically exports per-run maxima, selected maxima, and complete winning groups. All current `max_tanimoto` fields use all valid molecules; the aggregate field takes the maximum across runs. Metadata marks this as metric schema version 2. No supplementary scoring command is required. The former `scripts/evaluate_release_attempts.py` is a compatibility entry point to the same module.
 
 All 100 historical per-run maxima were recovered exactly from the archived valid-SMILES lists. The mean of the ten selected target maxima is 0.9136607142857143. Two fresh 10,000-attempt datasets, from the public generator and the original sampler, score 0.9300271739130433 and 0.9205116245694605 respectively under the same evaluator. These are separate sampling outcomes, not replacements for the historical experiment. The checkpoint and paired GeneVAE are unchanged.
 

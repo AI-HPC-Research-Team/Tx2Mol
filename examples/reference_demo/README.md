@@ -11,6 +11,13 @@ Reproduce with:
 python -m tx2mol.generate --config configs/generate_reference.json --num_runs 1 --num_samples 10 --batch_size 10 --output_dir outputs/reference_demo
 ```
 
+This folder is an unchanged early-release snapshot whose inline similarity used
+novel molecules. Current generation automatically scores all valid molecules and
+exports `best_max_tanimoto.csv` and `best_run_attempts.csv`; the archived raw
+strings can be rescored with `python -m tx2mol.evaluate --attempts
+examples/reference_demo/raw_attempts.csv --runs 1 --samples-per-run 10
+--output-dir outputs/reference_demo_rescored`.
+
 The metadata records the original validation output path. Paths are relative to
 the repository except resolved checkpoint paths used on the validation machine;
 hashes, configuration and seed policy establish the portable identities.

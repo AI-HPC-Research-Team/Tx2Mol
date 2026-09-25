@@ -1,4 +1,4 @@
-"""Generate target-conditioned molecules and retain every sampling attempt.
+"""Generate phenotype-guided molecules and automatically evaluate all runs.
 
 Run ``python -m tx2mol.generate --help`` for portable input paths. Configuration
 files are JSON objects; explicit command-line arguments override their values.
@@ -180,9 +180,8 @@ def load_ligands(path, train_smiles):
     data = rows[1:] if "smiles" in header else rows
     if any(len(row) <= column for row in data):
         raise ValueError(f"{path}: malformed ligand row")
-    # Preserve input multiplicity: historical avg_tanimoto averages all pairs.
     canonical = [s for row in data if (s := canonical_smiles(row[column])) is not None]
-    return [s for s in canonical if s not in train_smiles]
+    return list(dict.fromkeys(s for s in canonical if s not in train_smiles))
 
 
 def seed_everything(seed):
@@ -364,10 +363,13 @@ def load_models(args, checkpoint, train_cells):
 
 
 def score_attempts(raw_smiles, reference_smiles, source_ligands):
-    """Historical per-run metrics, with deterministic first-occurrence ordering."""
+    """All-valid maximum Tanimoto plus validity, novelty and property metrics."""
     from rdkit import Chem, DataStructs
     from rdkit.Chem import AllChem, Crippen, Descriptors, QED
     from rdkit.Contrib.SA_Score import sascorer
+    from .evaluate import LigandScorer
+
+    scorer = source_ligands if isinstance(source_ligands, LigandScorer) else LigandScorer(source_ligands)
 
     attempts, valid, seen = [], [], set()
     for index, raw in enumerate(raw_smiles):
@@ -382,7 +384,7 @@ def score_attempts(raw_smiles, reference_smiles, source_ligands):
             seen.add(canonical)
     unique = list(dict.fromkeys(valid))
     novel = [s for s in unique if s not in reference_smiles]
-    molecules = {s: Chem.MolFromSmiles(s) for s in set(valid + source_ligands)}
+    molecules = {s: Chem.MolFromSmiles(s) for s in unique}
     morgan = {s: AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=2048) for s, mol in molecules.items()}
     internal = [DataStructs.TanimotoSimilarity(morgan[left], morgan[right])
                 for i, left in enumerate(valid) for right in valid[i + 1:]]
@@ -390,13 +392,7 @@ def score_attempts(raw_smiles, reference_smiles, source_ligands):
     suffix_diversities = [statistics.mean(1.0 - DataStructs.TanimotoSimilarity(path_fps[left], path_fps[right])
                                          for right in unique[i + 1:])
                          for i, left in enumerate(unique[:-1])]
-    all_similarities, molecular_maxima = [], {}
-    for smiles in novel:
-        similarities = [DataStructs.TanimotoSimilarity(morgan[smiles], morgan[source]) for source in source_ligands]
-        all_similarities.extend(similarities)
-        if similarities:
-            best = max(range(len(similarities)), key=similarities.__getitem__)
-            molecular_maxima[smiles] = (similarities[best], source_ligands[best])
+    molecular_maxima = {smiles: scorer.score(smiles) for smiles in unique}
     for row in attempts:
         score, ligand = molecular_maxima.get(row["canonical_smiles"], ("", ""))
         row.update(max_tanimoto=score, closest_source_ligand=ligand)
@@ -411,16 +407,14 @@ def score_attempts(raw_smiles, reference_smiles, source_ligands):
         properties["lipinski"].append(int(mw <= 500 and logp <= 5 and Descriptors.NumHDonors(mol) <= 5
                                           and Descriptors.NumHAcceptors(mol) <= 10))
     result = {"total_generated": len(raw_smiles), "valid_num": len(valid), "unique_num": len(unique),
-              "novel_num": len(novel), "source_ligand_count": len(source_ligands),
+              "novel_num": len(novel), "source_ligand_count": len(scorer.ligands),
               "valid_rate": 100.0 * len(valid) / max(len(raw_smiles), 1),
               "unique_rate": 100.0 * len(unique) / max(len(valid), 1),
               "novel_rate": 100.0 * len(novel) / max(len(unique), 1),
               "diversity": 1.0 - (statistics.mean(internal) if internal else 0.0),
               "intdivp": statistics.mean(suffix_diversities) if suffix_diversities else 0.0,
-              "max_tanimoto": max(all_similarities, default=0.0),
-              "avg_tanimoto": statistics.mean(all_similarities) if all_similarities else 0.0,
-              "mean_max_tanimoto": statistics.mean(value[0] for value in molecular_maxima.values()) if molecular_maxima else 0.0,
-              "tanimoto_pair_count": len(all_similarities)}
+              "max_tanimoto": max((value[0] for value in molecular_maxima.values()), default=0.0),
+              "tanimoto_pair_count": len(valid) * len(scorer.ligands)}
     result.update({key: statistics.mean(values) if values else 0.0 for key, values in properties.items()})
     return result, attempts
 
@@ -430,8 +424,12 @@ def aggregate_runs(rows):
     for target in dict.fromkeys(row["target"] for row in rows):
         runs = [row for row in rows if row["target"] == target]
         summary = {"target": target, "cell_line": runs[0]["cell_line"], "num_runs": len(runs)}
+        if "max_tanimoto" in runs[0]:
+            best = min(runs, key=lambda row: (-row["max_tanimoto"], row["run_idx"]))
+            summary.update(max_tanimoto=best["max_tanimoto"], best_run_idx=best["run_idx"],
+                           best_group_1based=best["run_idx"] + 1)
         for key in runs[0]:
-            if key in ("target", "cell_line", "run_idx", "seed", "cell_line_idx"):
+            if key in ("target", "cell_line", "run_idx", "seed", "cell_line_idx", "max_tanimoto"):
                 continue
             values = [float(row[key]) for row in runs]
             summary[key + "_mean"] = statistics.mean(values)
@@ -467,16 +465,18 @@ def main(argv=None):
     import transformers
     from rdkit import RDLogger
     from .finetune import generate_samples_with_ge
+    from .evaluate import LigandScorer, PROTOCOL, RESULT_FILES, export_evaluation
 
     RDLogger.DisableLog("rdApp.error")
     RDLogger.DisableLog("rdApp.warning")
     checkpoint = resolve_checkpoint(args.model_dir)
     output = Path(args.output_dir)
     output.mkdir(parents=True, exist_ok=True)
-    if any((output / name).exists() for name in ("raw_attempts.csv", "run_metrics.csv", "metadata.json")):
+    if any((output / name).exists() for name in ("raw_attempts.csv", "run_metrics.csv", "metadata.json") + RESULT_FILES):
         raise FileExistsError(f"{output}: generation results already exist; choose a fresh output_dir")
     train, train_cells, train_meta = load_reference(args.train_data_path, args.legacy_reference_column)
     validation, _, val_meta = load_reference(args.val_data_path, args.legacy_reference_column)
+    scoring_train = train if args.legacy_reference_column is None else load_reference(args.train_data_path)[0]
     manifest_path = Path(args.gene_order_path) if args.gene_order_path else None
     checkpoint_order_path = checkpoint / "gene_columns.json"
     if manifest_path is None and checkpoint_order_path.is_file():
@@ -498,14 +498,14 @@ def main(argv=None):
         target_values[target] = np.array(values, dtype=np.float32)
         if not np.isfinite(target_values[target]).all():
             raise ValueError(f"{target_path}: values overflow float32")
-        ligands[target] = load_ligands(ligand_path, train)
+        ligands[target] = LigandScorer(load_ligands(ligand_path, scoring_train))
         inputs.extend([target_path, ligand_path])
     seed_everything(args.seed)
     model, tokenizer, projection, gene_vae, embedding, device, model_details = load_models(args, checkpoint, train_cells)
     inputs.extend(path for path in checkpoint.rglob("*") if path.is_file() and "__pycache__" not in path.parts)
-    inputs.extend(Path(__file__).with_name(name) for name in ("generate.py", "finetune.py", "gene_vae.py"))
+    inputs.extend(Path(__file__).with_name(name) for name in ("generate.py", "evaluate.py", "finetune.py", "gene_vae.py"))
     metadata = {
-        "status": "running", "created_utc": datetime.now(timezone.utc).isoformat(),
+        "status": "running", "metric_schema_version": 2, "created_utc": datetime.now(timezone.utc).isoformat(),
         "config": vars(args), "checkpoint": str(checkpoint), **model_details,
         "versions": {"python": platform.python_version(), "numpy": np.__version__, "torch": torch.__version__,
                      "transformers": transformers.__version__, "rdkit": rdkit.__version__, "cuda": torch.version.cuda},
@@ -517,15 +517,15 @@ def main(argv=None):
         "gene_order": expected_order, "expression_transform": "none; first numeric data row used as supplied (historical protocol)",
         "references": {"train": train_meta, "validation": val_meta},
         "protocol": {
-            "aggregation": "Arithmetic mean of per-run metrics for each target; sample standard deviation (ddof=1). No best-run selection.",
+            "aggregation": "Maximum Tanimoto across runs per target, keeping the entire winning run; other diagnostics use per-run means and sample standard deviations (ddof=1).",
+            "maximum_tanimoto": PROTOCOL,
             "validity": "RDKit sanitizes SMILES; canonical nonempty molecules must have at least two atoms.",
             "rates": "Percent: valid/attempted, unique/valid, novel/unique. Zero denominator gives zero.",
             "novelty": "Canonical SMILES absent from both training and validation sets.",
             "reference_column": "Named SMILES column, otherwise zero-based column 2; explicit legacy override recorded in config.",
-            "source_ligands": "Canonical valid source ligands absent from TRAINING set; input duplicates retained.",
+            "source_ligands": "Canonical deduplicated source ligands absent from canonical TRAINING SMILES; legacy_reference_column does not alter scoring references.",
             "properties": "QED, SA, logP, Lipinski compliance (0/1), MW averaged over novel unique molecules; empty set gives zero.",
-            "similarity": "Morgan radius 2, 2048 bits; max and mean over all novel-unique/generated × source pairs; empty set gives zero.",
-            "mean_max_tanimoto": "Additional diagnostic: mean of each novel unique molecule's maximum ligand similarity.",
+            "similarity": "Morgan radius 2, 2048 bits, useChirality=False; maximum over ALL VALID generated/source pairs, without a novelty filter; empty sets give zero.",
             "diversity": "1 minus mean Morgan Tanimoto over unordered pairs of valid attempts including duplicates; fewer than two gives 1 (historical convention).",
             "intdivp": "Historical RDKFingerprint distance, mean of suffix-wise means over unique valid molecules; deterministic first-occurrence order; fewer than two gives zero.",
             "latent": "Sampled GeneVAE z, including in evaluation mode.",
@@ -569,10 +569,15 @@ def main(argv=None):
                 write_csv(output / "aggregate_metrics.csv", aggregate_runs(all_runs))
                 print(f"{target} run {run_idx + 1}/{args.num_runs}: {metrics['valid_num']}/{len(raw)} valid, "
                       f"{metrics['novel_num']} novel; max Tanimoto={metrics['max_tanimoto']:.4f}", flush=True)
-    metadata.update(status="complete", completed_utc=datetime.now(timezone.utc).isoformat(),
+    metadata.update(status="evaluating", total_attempts=len(args.targets) * args.num_runs * args.num_samples)
+    write_json(output / "metadata.json", metadata)
+    evaluation = export_evaluation(output / "raw_attempts.csv", output, ligands, args.num_runs, args.num_samples,
+                                   args.train_data_path, args.source_ligands_dir, targets=args.targets,
+                                   expected_scores=all_runs)
+    metadata.update(status="complete", evaluation=evaluation, completed_utc=datetime.now(timezone.utc).isoformat(),
                     total_attempts=len(args.targets) * args.num_runs * args.num_samples)
     write_json(output / "metadata.json", metadata)
-    print(f"Saved all attempts and mean-per-run metrics to {output}")
+    print(f"Saved all attempts, run scores, selected maxima and complete winning groups to {output}")
 
 
 if __name__ == "__main__":

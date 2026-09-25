@@ -12,6 +12,7 @@ requires-python = ">=3.10,<3.12"
 tx2mol-pretrain = "tx2mol.pretrain:main"
 tx2mol-finetune = "tx2mol.finetune:main"
 tx2mol-generate = "tx2mol.generate:main"
+tx2mol-evaluate = "tx2mol.evaluate:main"
 
 [tool.setuptools.packages.find]
 include = ["tx2mol*"]

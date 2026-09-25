@@ -19,14 +19,14 @@ python scripts/evaluate_gxvaes_protocol.py \
 ## Reevaluate the public generator's 10,000 attempts
 
 ```bash
-python scripts/evaluate_release_attempts.py \
+python -m tx2mol.evaluate \
   --attempts examples/paper_protocol/released/raw_attempts.csv \
   --output-dir outputs/released_paper_evaluation
 ```
 
 Read `best_max_tanimoto.csv` for the ten selected maxima and `best_run_attempts.csv` for the complete winning groups (1,000 attempts total). The expected mean is **0.9300271739130433**. To rescore the fresh original-sampler run, replace the input with `examples/paper_protocol/fresh_original/raw_attempts.csv` and choose another output directory; its mean is **0.9205116245694605**.
 
-Both fresh-data folders also include these selected-result files for direct inspection. Their full raw inputs and all-run scores remain available beside them.
+Both fresh-data folders also include the earlier selected-result files for direct inspection. Their full raw inputs and all-run scores remain available beside them. The current module writes all-valid per-attempt scores and witness pairs as well; maximum scores and selected groups are unchanged.
 
 The two fresh datasets are separate stochastic experiments with the same archived model and GeneVAE. The public generator uses seeds 42–51; the original sampler did not explicitly reset seeds. Their differences are not evidence of exact regeneration of historical molecules.
 
@@ -48,4 +48,4 @@ The two fresh datasets are separate stochastic experiments with the same archive
 
 `maximum_tanimoto_comparison.csv` retains full precision and the fresh winning group numbers. `maximum_tanimoto_witness_pairs.csv` records a generated molecule and eligible known ligand attaining each selected maximum; `valid_ordinal` is zero-based within that run's valid-molecule list. Fingerprints use the original default `useChirality=False`, so a score of 1 does not necessarily mean identical stereochemistry.
 
-`provenance.json` records source/checkpoint identities and sampling settings; `SHA256SUMS` covers the example inputs and expected results. The recovered evaluator is unchanged. The public raw-attempt file retains the generator's novel-subset similarity fields for provenance; use the separate paper evaluator for the all-valid maximum. See [methods](../../docs/METHODS.md#paper-maximum-tanimoto-evaluation) and [validation](../../docs/VALIDATION.md).
+`provenance.json` records source/checkpoint identities and sampling settings; `SHA256SUMS` covers this archived example. `publication_verification.json` records the initial publication check and its then-current source hashes. The public raw-attempt file retains the former generator's novel-subset similarity fields as an immutable snapshot; `tx2mol.evaluate` recalculates them. New `tx2mol.generate` runs already use the all-valid evaluator and automatically export the final results. See [methods](../../docs/METHODS.md#paper-maximum-tanimoto-evaluation) and [validation](../../docs/VALIDATION.md).

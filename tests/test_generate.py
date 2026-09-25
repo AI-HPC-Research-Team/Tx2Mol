@@ -139,7 +139,17 @@ class GenerateMetricTests(unittest.TestCase):
         self.assertAlmostEqual(scores["novel_rate"], 50)
         self.assertEqual(scores["max_tanimoto"], 1)
         self.assertEqual(attempts[2]["closest_source_ligand"], "CCN")
-        self.assertEqual(attempts[0]["max_tanimoto"], "")
+        self.assertGreater(attempts[0]["max_tanimoto"], 0)
+        self.assertEqual(attempts[3]["max_tanimoto"], "")
+        self.assertNotIn("mean_max_tanimoto", scores)
+        self.assertNotIn("avg_tanimoto", scores)
+
+    def test_non_novel_molecules_determine_primary_maximum(self):
+        scores, attempts = score_attempts(["CCN", "CCO"], {"CCN"}, ["CCN", "NCC"])
+        self.assertEqual(attempts[0]["novel"], 0)
+        self.assertEqual(attempts[0]["max_tanimoto"], 1.0)
+        self.assertEqual(scores["max_tanimoto"], 1.0)
+        self.assertEqual(scores["source_ligand_count"], 1)
 
     def test_diversity_retains_duplicate_attempts(self):
         from rdkit import Chem, DataStructs
@@ -150,14 +160,18 @@ class GenerateMetricTests(unittest.TestCase):
         scores, _ = score_attempts(["CCO", "CCO", "CCN"], set(), ["CCN"])
         self.assertAlmostEqual(scores["diversity"], 1 - (1 + 2 * sim) / 3)
 
-    def test_means_across_runs_never_select_best(self):
+    def test_aggregation_selects_maximum_and_averages_other_diagnostics(self):
         rows = [{"target": "AKT1", "cell_line": "MCF7", "run_idx": i, "seed": 42 + i,
-                 "valid_rate": value} for i, value in enumerate((0, 100))]
+                 "valid_rate": value, "max_tanimoto": score}
+                for i, (value, score) in enumerate(((0, 0.4), (100, 1.0)))]
         output = aggregate_runs(rows)
         self.assertEqual(len(output), 1)
         self.assertEqual(output[0]["valid_rate_mean"], 50)
         self.assertAlmostEqual(output[0]["valid_rate_std"], 50 * 2**0.5)
         self.assertNotIn("seed_mean", output[0])
+        self.assertEqual(output[0]["max_tanimoto"], 1.0)
+        self.assertEqual(output[0]["best_run_idx"], 1)
+        self.assertNotIn("max_tanimoto_mean", output[0])
 
 
 if __name__ == "__main__":

@@ -38,7 +38,7 @@ Default generation uses MCF7, 10 runs per target, 100 attempted strings per run,
 
 ### Paper maximum Tanimoto evaluation
 
-`scripts/evaluate_release_attempts.py` invokes the recovered, unchanged `evaluate_gxvaes_protocol.py`. It scores **all valid generated molecules**. Known ligands are canonicalized, deduplicated, and excluded if their canonical SMILES occur in the training set (metadata column 2, zero-based). Validation SMILES are not used to exclude reference ligands. Generated molecules are not filtered by novelty.
+`tx2mol.generate` and `tx2mol.evaluate` share the same scoring and selection implementation. Generation automatically evaluates **all valid generated molecules**, exports every run maximum, and retains the complete winning groups. Known ligands are canonicalized, deduplicated, and excluded if their canonical SMILES occur in the training set (metadata column 2, zero-based). Validation SMILES are not used to exclude reference ligands. Generated molecules are not filtered by novelty. The unchanged historical evaluator is retained as an independent reference, not a runtime dependency.
 
 For target `t` and run `r`, compute `S(t,r) = max Tanimoto(Morgan(g), Morgan(l))` over valid generated molecules `g` and eligible known ligands `l`. Use radius 2, 2,048 bits, and the historical RDKit default `useChirality=False`. A value of 1 does not establish stereochemical identity. Empty molecule/reference sets retain the historical score of zero.
 
@@ -46,17 +46,17 @@ Select `max_r S(t,r)` across ten runs per target and retain the entire winning g
 
 ### Generator diagnostics
 
-The generator also retains the following diagnostics in `run_metrics.csv` and `aggregate_metrics.csv`. Their similarity scope differs from the paper evaluator above.
+The generator also retains the following diagnostics in `run_metrics.csv` and `aggregate_metrics.csv`. Every primary `max_tanimoto` field uses the all-valid definition above.
 
 - Validity: valid RDKit molecules with at least two atoms / all attempts.
 - Uniqueness: unique canonical valid SMILES / valid attempts.
 - Novelty: unique valid molecules absent from the union of training and validation SMILES / unique valid molecules.
 - Diversity: one minus mean pairwise Tanimoto similarity over valid attempts, including duplicates, using radius-2, 2,048-bit Morgan fingerprints. The historical fewer-than-two-valid convention returns 1.0; inspect the molecule count before interpreting it.
-- Source-ligand similarity: on unique novel molecules, after excluding training molecules from supplied source ligands. `max_tanimoto` is the maximum across all generated/reference pairs, `avg_tanimoto` is their pairwise mean, and `mean_max_tanimoto` averages each generated molecule's best match. These three definitions are intentionally separate.
+- Source-ligand similarity: each valid attempt receives its maximum eligible-ligand similarity; each run receives the maximum over its attempts. Mean pairwise and mean-maximum Tanimoto fields are not produced by the current generator.
 - `intdivp` preserves the legacy RDKFingerprint suffix-wise mean-distance statistic. It is order-sensitive and is not the same as Morgan diversity. The release uses deterministic first-occurrence order instead of set iteration order.
 - QED, SA, logP, Lipinski compliance and molecular weight are averaged over unique novel molecules. Legacy empty-set zero conventions are retained; counts are supplied so zeros are not mistaken for observed molecular properties.
 
-Percentages are reported on a 0–100 scale. `aggregate_metrics.csv` uses the arithmetic mean and sample standard deviation (ddof=1), with zero SD for a single run. This diagnostic file does not select the best run; use `best_max_tanimoto.csv` from the separate paper evaluation for that result.
+Percentages are reported on a 0–100 scale. `aggregate_metrics.csv` reports the highest `max_tanimoto` and its run index for each target; other diagnostics use the arithmetic mean and sample standard deviation (ddof=1), with zero SD for a single run. `best_max_tanimoto.csv` records the selected scores and witness pairs; `best_run_attempts.csv` retains the complete winning groups. All files are created automatically by generation.
 
 ## Seed and checkpoint provenance
 

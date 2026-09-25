@@ -29,7 +29,7 @@ The test, default-ligand, and alternate-ligand directories each contain exactly 
 ## Paper-protocol recovery and full generation checks (2026-09-25)
 
 - Reevaluated every archived run with the recovered independent evaluator: **all 100 per-run maximum Tanimoto scores match the historical evaluation table exactly**. The mean of the ten selected target maxima is **0.9136607142857143**.
-- The public generator completed **10,000 attempts**, with 9,728 valid molecules. Reapplying the recovered all-valid evaluator gives **0.9300271739130433**. Its built-in novel-only metrics are separate diagnostics.
+- The earlier public-generator snapshot completed **10,000 attempts**, with 9,728 valid molecules. Reapplying the recovered all-valid evaluator gives **0.9300271739130433**. That snapshot's built-in metrics used the novel subset; the maintained generator now uses all-valid similarity directly.
 - The original sampler completed a separate **10,000-attempt** run with 9,737 valid molecules and mean selected maximum **0.9205116245694605**. Seven of ten selected target maxima equal the historical values. The only sampling-run additions were reference-fingerprint caching and raw/RNG tracing; 3,000 scalar pair comparisons verified the cache preserved scores. An incomplete timing trial was excluded.
 - Independently checked all **300 per-run maxima** and **30 witness molecule pairs** across these three datasets. Public gzip training data produce the same scores as the original server inputs.
 - A larger fixed-seed repeat check matched 81/100 strings in one repetition and 100/100 in another. The earlier ten-string agreement does not establish general bitwise determinism.
@@ -37,3 +37,9 @@ The test, default-ligand, and alternate-ligand directories each contain exactly 
 All historical valid-SMILES lists and both fresh raw-attempt datasets are published in `examples/paper_protocol/`. These generation/evaluation checks use existing weights; full model training and a clean-host installation were not repeated.
 
 Before publication, the bundled commands were run on all three datasets using the repository's gzip training data and known ligands, on macOS with Python 3.12.4, pandas 2.2.3, and RDKit 2025.09.4. All 300 per-run maxima matched the server results exactly, all 30 witness pairs were verified, and both sets of 1,000 selected attempts matched their complete source groups. **All 23 regression tests passed**, including the unchanged-evaluator checksum, all-valid scoring, canonical training exclusion, tie handling, complete winning-group export, malformed/incomplete input rejection, and overwrite protection. See `examples/paper_protocol/publication_verification.json`.
+
+## Integrated generation and evaluation (2026-09-25)
+
+The current generator calls `tx2mol.evaluate` directly, scores all valid molecules during generation, and exports the complete winning groups automatically. Its aggregate maximum is selected across runs, not averaged. The CPU reevaluation command uses the same scorer.
+
+All **300 archived per-run maxima** match the unchanged historical evaluator exactly under the native implementation. Both sets of 1,000 winning attempts match their full source groups. **25 tests passed on both macOS and the Linux server**, including the complete generation-to-evaluation control flow with a mocked sampler, non-novel molecules attaining the maximum, ligand deduplication, missing-target rejection, and automatic result export. The numerical comparison and source hashes are in `assets/integrated_evaluation_validation.json`. These checks do not rerun training.
