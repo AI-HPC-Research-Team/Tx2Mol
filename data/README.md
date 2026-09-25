@@ -18,13 +18,17 @@ data/
 
 The shared subLINCS train/validation/test splits, expected gene-order file and small training examples remain directly under `data/`. These shared files are separate from the three application test scenarios.
 
-## Targets
+<a id="targets"></a>
+
+## 🎯 Targets
 
 `targets/test/` contains ten unchanged target signatures: AKT1, AKT2, AURKB, CTSK, EGFR, HDAC1, MTOR, PIK3CA, SMAD3 and TP53. Their CSV headers identify 978 ordered genes. `targets/known_ligands/` contains the corresponding ten `source_TARGET.csv` files with a `SMILES` header.
 
 These are the inputs consumed by `configs/generate.json` and `configs/generate_reference.json`.
 
-## SciPlex3
+<a id="sciplex3"></a>
+
+## 🧫 SciPlex3
 
 `sciplex3/test/` contains the unchanged A549, K562 and MCF7 `*_normalized_final.csv` matrices used by the original generation scripts. Each has 144 data rows: 143 perturbation rows and one control row. The first 11 columns are metadata, including the paired perturbing drug's `SMILES`; the following 978 columns are expression values. Original dose and time information are retained.
 
@@ -32,7 +36,9 @@ The original SciPlex3 generator obtains the reference molecule from each test ro
 
 To join references back to expression profiles, use `test_row` as the positional index of the source CSV's data rows, excluding its header. Controls remain in the test matrix but are excluded from the known-ligand export, matching the original loader's control exclusion.
 
-## Patient/disease signatures
+<a id="patientdisease-signatures"></a>
+
+## 🩺 Patient/disease signatures
 
 `patient/test/` contains the 12 unchanged `test_DISEASE.csv` expression files corresponding to the updated 12-disease heatmap. These are disease-level processed signatures, with a 978-gene header, not newly constructed clinical records.
 

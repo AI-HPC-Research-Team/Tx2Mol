@@ -8,7 +8,9 @@ GeneVAE pretraining -> Tx2Mol post-training -> phenotype-guided SMILES generatio
 
 Use the released checkpoint in section 2, or train a new model in section 4.
 
-## 1. Install the environment
+<a id="1-install-the-environment"></a>
+
+## 🛠️ 1. Install the environment
 
 Requires Linux, Conda, Git, and one NVIDIA Ampere-or-newer GPU. The pipeline was tested on an RTX 4090 (24 GB). Reserve at least 10 GB; training checkpoints need additional space. The environment pins Python 3.10, PyTorch 2.1.2, CUDA 11.8, Transformers 4.46.2, and FlashAttention 2.6.1. GeneVAE alone can run on CPU; the full pipeline requires CUDA.
 
@@ -25,7 +27,9 @@ python scripts/validate_data.py
 
 Check for `cuda_available: true` and `Data validated.` Run subsequent commands from the repository root with the `tx2mol` environment active. Choose a new output directory for each experiment. Explicit command-line options override JSON settings.
 
-## 2. Quick start: use the released checkpoint
+<a id="2-quick-start-use-the-released-checkpoint"></a>
+
+## 🚀 2. Quick start: use the released checkpoint
 
 Download the epoch-9 Tx2Mol checkpoint and its paired GeneVAE:
 
@@ -75,7 +79,9 @@ python -m tx2mol.generate --config configs/generate_reference.json \
 
 The selected score is **each target's highest maximum Tanimoto**, scoring all valid molecules. The overall mean averages the selected target maxima. See [Methods](METHODS.md#paper-maximum-tanimoto-evaluation) for the exact calculation.
 
-## 4. Train the three-stage pipeline
+<a id="4-train-the-three-stage-pipeline"></a>
+
+## 🧠 4. Train the three-stage pipeline
 
 Download the starting molecular backbone:
 
@@ -86,7 +92,9 @@ python scripts/prepare_assets.py \
 
 This installs the approximately 630 MB base asset under `pretrained/novomolgen/`.
 
-### Stage 1: pretrain GeneVAE
+<a id="stage-1-pretrain-genevae"></a>
+
+### 🧬 Stage 1: pretrain GeneVAE
 
 ```bash
 python -m tx2mol.pretrain --config configs/pretrain.json
@@ -94,7 +102,9 @@ python -m tx2mol.pretrain --config configs/pretrain.json
 
 Uses `data/train.csv.gz` and saves the final model to `outputs/gene_vae/gene_vae.pt`, alongside the settings, gene order, and loss log.
 
-### Stage 2: post-train Tx2Mol
+<a id="stage-2-post-train-tx2mol"></a>
+
+### 🧠 Stage 2: post-train Tx2Mol
 
 ```bash
 python -m tx2mol.finetune --config configs/finetune.json
@@ -102,7 +112,9 @@ python -m tx2mol.finetune --config configs/finetune.json
 
 Loads the Stage 1 GeneVAE and keeps it frozen while training the molecular model and conditioning projection. Progress is saved to `outputs/tx2mol/training_log.csv`; `best_checkpoint.json` identifies the checkpoint selected by the generation-based composite score.
 
-### Stage 3: generate with your new checkpoint
+<a id="stage-3-generate-with-your-new-checkpoint"></a>
+
+### 🧪 Stage 3: generate with your new checkpoint
 
 ```bash
 python -m tx2mol.generate --config configs/generate.json
