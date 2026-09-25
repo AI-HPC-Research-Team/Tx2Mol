@@ -16,7 +16,7 @@ data/
       alternate_collection/
 ```
 
-The shared subLINCS train/validation/test splits, expected gene-order file and small training examples remain directly under `data/`. These shared files are separate from the three application test scenarios.
+The shared subLINCS train/validation/test splits, expected gene-order file and small training examples remain directly under `data/`. GeneVAE pretraining and Tx2Mol post-training directly reuse the upstream preprocessed data, preserving the supplied values and column order. No additional normalization is applied. These shared files are separate from the three application test scenarios.
 
 <a id="targets"></a>
 

@@ -2,7 +2,7 @@
 
 ## Data representation
 
-The supplied subLINCS matrices contain `cell_line, compound_id, SMILES` followed by 978 expression values. GeneVAE uses the expression vector; post-training also uses SMILES and cell labels. Target inputs use the first numeric signature row, with genes ordered according to `data/gene_order.json`. Inputs are used without additional normalization or gene reordering. Dataset formats and provenance are described in the [data guide](../data/README.md).
+We directly reuse upstream preprocessed subLINCS matrices containing `cell_line, compound_id, SMILES` followed by 978 expression values. GeneVAE uses the expression vector; post-training also uses SMILES and cell labels. Target inputs use the first numeric signature row, with genes ordered according to `data/gene_order.json`. Inputs are used without additional normalization or gene reordering. Dataset formats and provenance are described in the [data guide](../data/README.md).
 
 ## GeneVAE pretraining
 
@@ -55,4 +55,4 @@ Rates are reported as percentages. Across runs, maximum Tanimoto is aggregated b
 
 ## Reproducibility and resources
 
-The packaged environment pins Python 3.10, PyTorch 2.1.2, CUDA 11.8, and FlashAttention 2.6.1. GPU checks used one RTX 4090 (24 GB); exact validation environments and scope are in [Validation](VALIDATION.md). Runs record seeds, settings, software versions, and checkpoint/data hashes. Keep GeneVAE paired with its trained Tx2Mol projection; sampling may vary across hardware and software environments.
+The packaged environment pins Python 3.10, PyTorch 2.1.2, CUDA 11.8, and FlashAttention 2.6.1. GPU checks used one RTX 4090 (24 GB); exact validation environments and scope are in [Validation](VALIDATION.md). Runs record seeds, settings, and software versions; generation also records checkpoint and data hashes. Keep GeneVAE paired with its trained Tx2Mol projection; sampling may vary across hardware and software environments.

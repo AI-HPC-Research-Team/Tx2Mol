@@ -15,7 +15,7 @@ The large molecular weights are separate assets of [release v1.0](https://github
 
 `scripts/prepare_assets.py` downloads and verifies these archives using `assets/release_manifest.json`. Extracted model directories, downloads, and new experiment outputs are ignored by Git. Do not rename or replace a published asset without updating its manifest and documenting the provenance of the new model.
 
-The earlier `Tx2Mol-with-checkpoint.zip` and its manifest remain historical snapshots. The `v1.0` tag predates the expanded source publication, so GitHub's automatically generated source archives for that tag do not contain the current pipeline. Clone the repository as shown in the README; the two named model assets work with that checkout.
+The earlier `Tx2Mol-with-checkpoint.zip` and its manifest remain historical snapshots. The `v1.0` tag predates the expanded source publication, so GitHub's automatically generated source archives for that tag do not contain the current pipeline. Download the current source from the repository's **Code → Download ZIP** menu on `main`, or clone as shown in the README. The two named model assets work with that source.
 
 ## Before publishing a source update
 
