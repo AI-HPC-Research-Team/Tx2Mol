@@ -81,7 +81,7 @@ The selected score is **each target's highest maximum Tanimoto**, scoring all va
 
 <a id="4-train-the-three-stage-pipeline"></a>
 
-## 🧠 4. Train the three-stage pipeline
+## ⚙️ 4. Train the three-stage pipeline
 
 Download the starting molecular backbone:
 
@@ -104,7 +104,7 @@ Uses `data/train.csv.gz` and saves the final model to `outputs/gene_vae/gene_vae
 
 <a id="stage-2-post-train-tx2mol"></a>
 
-### 🧠 Stage 2: post-train Tx2Mol
+### ⚙️ Stage 2: post-train Tx2Mol
 
 ```bash
 python -m tx2mol.finetune --config configs/finetune.json
