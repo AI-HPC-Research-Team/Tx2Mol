@@ -1,0 +1,48 @@
+{
+  "status": "complete",
+  "protocol": {
+    "name": "all_valid_best_run_maximum_tanimoto",
+    "generated_scope": "All valid generated molecules, without novelty filtering.",
+    "reference_scope": "Canonical, deduplicated known ligands excluding canonical training SMILES.",
+    "fingerprint": {
+      "type": "Morgan",
+      "radius": 2,
+      "bits": 2048,
+      "useChirality": false
+    },
+    "run_score": "Maximum over generated molecule / eligible known-ligand pairs; empty sets give zero.",
+    "selection": "Highest run maximum per target; ties choose the lowest zero-based run_idx.",
+    "summary": "Arithmetic mean of the selected target maxima, after run selection."
+  },
+  "attempts": 10000,
+  "targets": 10,
+  "runs_per_target": 10,
+  "attempts_per_run": 100,
+  "selected_attempts": 1000,
+  "mean_of_selected_target_maxima": 0.9300271739130433,
+  "raw_attempts_sha256": "cfd3817550d0299c2016ea8df00de39d8fefbbaf68d14642ea35bc878e7585cf",
+  "train_sha256": "289ac1a2e3c47a9a68f5d6c4b836c433d7381d92d6e3cbdafc234959ae032b8a",
+  "source_ligand_sha256": {
+    "AKT1": "1755985570914f6e32f9f0d4d1ef5638b1e64f9868d25731e600d98accab8951",
+    "AKT2": "ee2fcdc7c5c62444b4f145110bc9473e3b29a31d9517c68db962662d68f98846",
+    "AURKB": "f0203fd8abd7a4ab854f38fad0294d2ea1268284adee28ab99f04547b632ed14",
+    "CTSK": "8e330dcd2a8fccf1fe0e7ead6081df84842a213986abd7f1f70325721777905b",
+    "EGFR": "f9a8bc55485651e87d2fd2a61d62ba4190244324ffdebb159e862692eb305843",
+    "HDAC1": "d01bf5fbb273cdec7970e01ae6dc885fe9d5501ce0ccd5f0d7027932ab3d984d",
+    "MTOR": "e19f9063bbf26ce64499753dc93e8bb6a1131b850df05b0455aa6f8153a12c56",
+    "PIK3CA": "940f3ddd6dbe058551b06bc7294f415696c6e31cbaae2ba98ad74a21a53145a7",
+    "SMAD3": "71e701db4f2f4238a9055066ca28994a8b77256b56d2e21b8bc5d6fe49c57449",
+    "TP53": "09d2de56e8ec1d584cc12eb0b9334234362b8fc1d71318a16b199cee5efac37f"
+  },
+  "evaluator_sha256": "828836ca20b0b116c773a1feedbe31cf22340a884324abee260067dcc836480c",
+  "result_sha256": {
+    "run_max_tanimoto.csv": "f0ede99013e5844124884d749aacb1ccf395f88dc34f0e679bd774c708195012",
+    "best_max_tanimoto.csv": "06ac087077614571559f61dddadb304a8eb66079cdc0cc994d779ed035c0ba81",
+    "best_run_attempts.csv": "066712fb5f3499466775c61c3e114991c1829206b58db067f27b4a76dd0ff862"
+  },
+  "environment": {
+    "python": "3.10.18",
+    "pandas": "2.3.2",
+    "rdkit": "2022.09.5"
+  }
+}

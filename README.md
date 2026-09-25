@@ -54,6 +54,8 @@ Results are saved together in `outputs/reference_targets/`:
 - `raw_attempts.csv` and `run_max_tanimoto.csv`: all 10,000 attempts and all 100 run scores.
 - `evaluation_summary.json`: the mean of the ten selected target maxima, settings, and checksums.
 
+A [complete 10,000-attempt execution example](examples/integrated_generation/) shows the files produced automatically by this command.
+
 [Recompute the archived results](examples/paper_protocol/) without a GPU: the mean of the ten selected target maxima is **0.9136607 (0.914)**. Fresh samples may differ. See [metric definitions and outputs](docs/TUTORIAL.md#3-read-the-results).
 
 ## 4. Train the three-stage pipeline

@@ -28,5 +28,123 @@
     "tx2mol/evaluate.py": "828836ca20b0b116c773a1feedbe31cf22340a884324abee260067dcc836480c",
     "tests/test_generate.py": "e903ff430711e1aedee64d0972f8c90791aac069b12455581b7999435a7c182d",
     "tests/test_paper_evaluation.py": "331e55c5d44c120b13406ec26dedf4f879e3902e011af1bda60b043b7729ead5"
+  },
+  "gpu_generation": {
+    "status": "complete",
+    "date": "2026-09-25",
+    "command": "python -m tx2mol.generate --config configs/generate_reference.json",
+    "generation_attempts": 10000,
+    "valid_attempts": 9730,
+    "targets": 10,
+    "runs_per_target": 10,
+    "attempts_per_run": 100,
+    "selected_attempts": 1000,
+    "automatic_evaluation_matches_cpu_reevaluation": true,
+    "all_100_run_maxima_match_unchanged_historical_evaluator": true,
+    "whole_selected_groups_match_raw_attempts": true,
+    "scalar_witness_pairs_verified": 100,
+    "mean_of_selected_target_maxima": 0.9300271739130433,
+    "selected_target_scores": [
+      {
+        "target": "AKT1",
+        "run_idx": 0,
+        "max_tanimoto": 1.0
+      },
+      {
+        "target": "AKT2",
+        "run_idx": 0,
+        "max_tanimoto": 1.0
+      },
+      {
+        "target": "AURKB",
+        "run_idx": 0,
+        "max_tanimoto": 1.0
+      },
+      {
+        "target": "CTSK",
+        "run_idx": 7,
+        "max_tanimoto": 0.45652173913043476
+      },
+      {
+        "target": "EGFR",
+        "run_idx": 6,
+        "max_tanimoto": 1.0
+      },
+      {
+        "target": "HDAC1",
+        "run_idx": 0,
+        "max_tanimoto": 0.84375
+      },
+      {
+        "target": "MTOR",
+        "run_idx": 0,
+        "max_tanimoto": 1.0
+      },
+      {
+        "target": "PIK3CA",
+        "run_idx": 6,
+        "max_tanimoto": 1.0
+      },
+      {
+        "target": "SMAD3",
+        "run_idx": 4,
+        "max_tanimoto": 1.0
+      },
+      {
+        "target": "TP53",
+        "run_idx": 1,
+        "max_tanimoto": 1.0
+      }
+    ],
+    "environment": {
+      "python": "3.10.18",
+      "numpy": "1.26.4",
+      "torch": "2.1.2+cu118",
+      "transformers": "4.46.2",
+      "rdkit": "2022.09.5",
+      "cuda": "11.8"
+    },
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gene_vae_sha256": "2bcc46ff71ebbfba65ef17d20a301680be5c579bf05495f2fd6d84e87d224a7e",
+    "checkpoint_sha256": "e0f8a688857004f6291642c1322527e3358905e3a4658a7fc6c2d61f0376fd47",
+    "source_sha256": {
+      "tx2mol/generate.py": "36503e916d32f788bda136a528ce3ec8638db480b85652a656a4cfdd4f62f6b4",
+      "tx2mol/evaluate.py": "828836ca20b0b116c773a1feedbe31cf22340a884324abee260067dcc836480c"
+    },
+    "tests_passed": 25
+  },
+  "pinned_rdkit": {
+    "environment": {
+      "python": "3.10.18",
+      "pandas": "2.3.2",
+      "rdkit": "2024.09.6"
+    },
+    "tests_passed": 25,
+    "runs_verified": 100,
+    "scores_match_original_evaluator_exactly": true,
+    "mean_of_selected_target_maxima": 0.9205116245694605,
+    "evaluator_sha256": "828836ca20b0b116c773a1feedbe31cf22340a884324abee260067dcc836480c",
+    "installation": "rdkit==2024.9.6 installed into an isolated directory; the existing GPU environment was unchanged.",
+    "current_generated_runs_verified": 100,
+    "current_generated_selected_attempts_verified": 1000,
+    "current_generated_scores_match_exactly": true,
+    "gpu_quickstart": {
+      "status": "complete",
+      "attempts": 100,
+      "valid_attempts": 100,
+      "targets": 10,
+      "runs_per_target": 1,
+      "attempts_per_run": 10,
+      "environment": {
+        "python": "3.10.18",
+        "numpy": "1.26.4",
+        "torch": "2.1.2+cu118",
+        "transformers": "4.46.2",
+        "rdkit": "2024.09.6",
+        "cuda": "11.8"
+      },
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "automatic_evaluation_completed": true
+    }
   }
 }

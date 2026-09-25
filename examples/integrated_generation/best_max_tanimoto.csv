@@ -1,0 +1,11 @@
+target,run_idx,total_generated,valid_num,source_ligand_count,max_tanimoto,generated_smiles,known_ligand,attempt_index,best_group_1based
+AKT1,0,100,94,2109,1.0,CC[C@@H]1C(=O)N(C)c2cnc(Nc3ccc(C(=O)NC4CCN(C)CC4)cc3OC)nc2N1C1CCCC1,CCC1C(=O)N(C)c2cnc(Nc3ccc(C(=O)NC4CCN(C)CC4)cc3OC)nc2N1C1CCCC1,58,1
+AKT2,0,100,97,1259,1.0,CC[C@@H]1C(=O)N(C)c2cnc(Nc3ccc(C(=O)NC4CCN(C)CC4)cc3OC)nc2N1C1CCCC1,CCC1C(=O)N(C)c2cnc(Nc3ccc(C(=O)NC4CCN(C)CC4)cc3OC)nc2N1C1CCCC1,58,1
+AURKB,0,100,95,2068,1.0,CNC(=O)c1ccccc1Sc1ccc2c(C=Cc3ccccn3)n[nH]c2c1,CNC(=O)c1ccccc1Sc1ccc2c(/C=C/c3ccccn3)n[nH]c2c1,43,1
+CTSK,7,100,98,1561,0.45652173913043476,NC(=O)OCCCc1ccccc1,CCCC[C@@H](C=O)NC(=O)OCCCc1ccccc1,85,8
+EGFR,6,100,99,2246,1.0,CCC(=C(c1ccccc1)c1ccc(OCCN(C)C)cc1)c1ccccc1,CC/C(=C(\c1ccccc1)c1ccc(OCCN(C)C)cc1)c1ccccc1,48,7
+HDAC1,0,100,94,988,0.84375,CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(-c2ccc(F)cc2)n1CCC(O)CC(O)CC(=O)O,CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(-c2ccc(F)cc2)n1CC[C@@H](O)C[C@@H](O)CC(O)=NO,5,1
+MTOR,0,100,96,1480,1.0,O=C1Nc2ccc(I)cc2C1=Cc1cc(Br)c(O)c(Br)c1,O=C1Nc2ccc(I)cc2/C1=C/c1cc(Br)c(O)c(Br)c1,53,1
+PIK3CA,6,100,99,1177,1.0,Oc1ccc(C=Cc2cc(O)cc(O)c2)cc1,Oc1ccc(/C=C/c2cc(O)cc(O)c2)cc1,91,7
+SMAD3,4,100,98,12413,1.0,CN(C)CCC=C1c2ccccc2CSc2ccccc21,CN(C)CC/C=C1\c2ccccc2CSc2ccccc21,28,5
+TP53,1,100,99,6734,1.0,NCCCCCC(=O)O,NCCCCCCCCCCCC(=O)O,24,2
