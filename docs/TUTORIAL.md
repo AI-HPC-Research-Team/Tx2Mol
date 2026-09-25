@@ -10,7 +10,7 @@ Use the released checkpoint in section 2, or train a new model in section 4.
 
 <a id="1-install-the-environment"></a>
 
-## 🛠️ 1. Install the environment
+## 📦 1. Install the environment
 
 Requires Linux, Conda, Git, and one NVIDIA Ampere-or-newer GPU. The pipeline was tested on an RTX 4090 (24 GB). Reserve at least 10 GB; training checkpoints need additional space. The environment pins Python 3.10, PyTorch 2.1.2, CUDA 11.8, Transformers 4.46.2, and FlashAttention 2.6.1. GeneVAE alone can run on CPU; the full pipeline requires CUDA.
 
@@ -66,7 +66,9 @@ python -m tx2mol.generate --config configs/generate_reference.json \
   --output_dir outputs/reference_egfr
 ```
 
-## 3. Read the results
+<a id="3-read-the-results"></a>
+
+## 📊 3. Read the results
 
 | File | Contents |
 | --- | --- |
@@ -142,7 +144,9 @@ python -m tx2mol.generate --config configs/generate.json \
   --output_dir outputs/run02/generated
 ```
 
-## 5. Validate the pipeline
+<a id="5-validate-the-pipeline"></a>
+
+## ✅ 5. Validate the pipeline
 
 ```bash
 python -m unittest discover -s tests -v
@@ -151,7 +155,9 @@ python scripts/validate_data.py
 
 Completed checks and their scope are summarized in [Validation](VALIDATION.md).
 
-## 6. Datasets and custom inputs
+<a id="6-datasets-and-custom-inputs"></a>
+
+## 🗂️ 6. Datasets and custom inputs
 
 Shared training data are under `data/`. The `targets/`, `sciplex3/`, and `patient/` directories each contain `test/` and `known_ligands/`; patient data cover the 12 diseases in the updated heatmap. See the [data guide](../data/README.md) for formats and file lists. This tutorial implements the target workflow; SciPlex3 and patient analyses require their respective protocols.
 
@@ -170,7 +176,9 @@ python -m tx2mol.generate --config configs/generate_reference.json \
   --output_dir outputs/custom_target
 ```
 
-## 7. Troubleshooting
+<a id="7-troubleshooting"></a>
+
+## 🛠️ 7. Troubleshooting
 
 | Problem | What to check |
 | --- | --- |
