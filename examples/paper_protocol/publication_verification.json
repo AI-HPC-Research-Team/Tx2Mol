@@ -1,0 +1,43 @@
+{
+  "environment": {
+    "python": "3.12.4",
+    "pandas": "2.2.3",
+    "rdkit": "2025.09.4"
+  },
+  "datasets": {
+    "historical": {
+      "runs_verified": 100,
+      "all_run_maxima_match_exactly": true,
+      "maximum_absolute_delta": 0.0,
+      "mean_of_selected_target_maxima": 0.9136607142857143
+    },
+    "released": {
+      "runs_verified": 100,
+      "all_run_maxima_match_exactly": true,
+      "maximum_absolute_delta": 0.0,
+      "mean_of_selected_target_maxima": 0.9300271739130433,
+      "raw_attempts": 10000,
+      "valid_attempts": 9728,
+      "selected_attempts": 1000,
+      "whole_selected_groups_verified": true
+    },
+    "fresh_original": {
+      "runs_verified": 100,
+      "all_run_maxima_match_exactly": true,
+      "maximum_absolute_delta": 0.0,
+      "mean_of_selected_target_maxima": 0.9205116245694605,
+      "raw_attempts": 10000,
+      "valid_attempts": 9737,
+      "selected_attempts": 1000,
+      "whole_selected_groups_verified": true
+    }
+  },
+  "witness_pairs_verified": 30,
+  "unit_tests_passed": 23,
+  "source_sha256": {
+    "scripts/evaluate_gxvaes_protocol.py": "1c03c9dc21dae605db1a1920157e249788472d2487cae8cb85b91a822b6b5470",
+    "scripts/evaluate_release_attempts.py": "be5cec86449d7e43287cf5f3a4482eff05a0b73b24f3b6d07633985c33328708",
+    "tests/test_paper_evaluation.py": "b891d96b0ddd0aa3f31fc93071104b25575b7582a5b8a30199e67455e98243cf"
+  },
+  "selected_score_float_round_trip_verified": true
+}

@@ -1,6 +1,6 @@
 # Validation performed on this release
 
-Validated on 2026-09-23 using one NVIDIA RTX 4090 (24 GB), Python 3.10.18, PyTorch 2.1.2+cu118, Transformers 4.46.2, Accelerate 0.34.0, FlashAttention 2.6.1, RDKit 2024.9.6 and NumPy 1.26.4.
+Validated on 2026-09-23 using one NVIDIA RTX 4090 (24 GB), Python 3.10.18, PyTorch 2.1.2+cu118, Transformers 4.46.2, Accelerate 0.34.0, FlashAttention 2.6.1 and NumPy 1.26.4. The initial inventory reported RDKit distribution metadata as 2024.9.6; the subsequent generation audit found the imported runtime to be **2022.09.5**. Runtime and installed-distribution version records should not be conflated.
 
 Completed checks:
 
@@ -25,3 +25,15 @@ The 19 CPU regression tests and complete supplied-data validation were rerun loc
 ## Patient cohort update (2026-09-25)
 
 The test, default-ligand, and alternate-ligand directories each contain exactly the 12 disease stems in the updated heatmap. The extra historical `gastric` files were removed, while `stomach cancer` was retained. All retained data hashes are unchanged. Complete data validation passed for the shared datasets and all 62 remaining scenario CSV files, including SciPlex3 row pairing. This data-only update did not rerun model training or generation.
+
+## Paper-protocol recovery and full generation checks (2026-09-25)
+
+- Reevaluated every archived run with the recovered independent evaluator: **all 100 per-run maximum Tanimoto scores match the historical evaluation table exactly**. The mean of the ten selected target maxima is **0.9136607142857143**.
+- The public generator completed **10,000 attempts**, with 9,728 valid molecules. Reapplying the recovered all-valid evaluator gives **0.9300271739130433**. Its built-in novel-only metrics are separate diagnostics.
+- The original sampler completed a separate **10,000-attempt** run with 9,737 valid molecules and mean selected maximum **0.9205116245694605**. Seven of ten selected target maxima equal the historical values. The only sampling-run additions were reference-fingerprint caching and raw/RNG tracing; 3,000 scalar pair comparisons verified the cache preserved scores. An incomplete timing trial was excluded.
+- Independently checked all **300 per-run maxima** and **30 witness molecule pairs** across these three datasets. Public gzip training data produce the same scores as the original server inputs.
+- A larger fixed-seed repeat check matched 81/100 strings in one repetition and 100/100 in another. The earlier ten-string agreement does not establish general bitwise determinism.
+
+All historical valid-SMILES lists and both fresh raw-attempt datasets are published in `examples/paper_protocol/`. These generation/evaluation checks use existing weights; full model training and a clean-host installation were not repeated.
+
+Before publication, the bundled commands were run on all three datasets using the repository's gzip training data and known ligands, on macOS with Python 3.12.4, pandas 2.2.3, and RDKit 2025.09.4. All 300 per-run maxima matched the server results exactly, all 30 witness pairs were verified, and both sets of 1,000 selected attempts matched their complete source groups. **All 23 regression tests passed**, including the unchanged-evaluator checksum, all-valid scoring, canonical training exclusion, tie handling, complete winning-group export, malformed/incomplete input rejection, and overwrite protection. See `examples/paper_protocol/publication_verification.json`.

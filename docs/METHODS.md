@@ -34,7 +34,19 @@ This release preserves that computation for historical reproducibility, emits a 
 
 ## Generation and molecular metrics
 
-Default generation uses MCF7, 10 runs per target, 100 attempted strings per run, temperature 1.0, top-p 0.95, top-k 100 and maximum length 100. Run `r` uses seed `42 + r` for Python, NumPy, PyTorch and CUDA; all attempted strings are retained, without retries to replace invalid strings or selecting a best run.
+Default generation uses MCF7, 10 runs per target, 100 attempted strings per run, temperature 1.0, top-p 0.95, top-k 100 and maximum length 100. Run `r` uses seed `42 + r` for Python, NumPy, PyTorch and CUDA; all attempted strings are retained, without retries to replace invalid strings. These are repeated sampling runs with a fixed checkpoint, not training epochs.
+
+### Paper maximum Tanimoto evaluation
+
+`scripts/evaluate_release_attempts.py` invokes the recovered, unchanged `evaluate_gxvaes_protocol.py`. It scores **all valid generated molecules**. Known ligands are canonicalized, deduplicated, and excluded if their canonical SMILES occur in the training set (metadata column 2, zero-based). Validation SMILES are not used to exclude reference ligands. Generated molecules are not filtered by novelty.
+
+For target `t` and run `r`, compute `S(t,r) = max Tanimoto(Morgan(g), Morgan(l))` over valid generated molecules `g` and eligible known ligands `l`. Use radius 2, 2,048 bits, and the historical RDKit default `useChirality=False`. A value of 1 does not establish stereochemical identity. Empty molecule/reference sets retain the historical score of zero.
+
+Select `max_r S(t,r)` across ten runs per target and retain the entire winning group. Ties use the lowest run index. The final mean is across the ten selected target maxima. Reevaluating all 100 archived runs gives the historical mean **0.9136607142857143**; see `examples/paper_protocol/` for the full inputs and expected scores.
+
+### Generator diagnostics
+
+The generator also retains the following diagnostics in `run_metrics.csv` and `aggregate_metrics.csv`. Their similarity scope differs from the paper evaluator above.
 
 - Validity: valid RDKit molecules with at least two atoms / all attempts.
 - Uniqueness: unique canonical valid SMILES / valid attempts.
@@ -44,7 +56,7 @@ Default generation uses MCF7, 10 runs per target, 100 attempted strings per run,
 - `intdivp` preserves the legacy RDKFingerprint suffix-wise mean-distance statistic. It is order-sensitive and is not the same as Morgan diversity. The release uses deterministic first-occurrence order instead of set iteration order.
 - QED, SA, logP, Lipinski compliance and molecular weight are averaged over unique novel molecules. Legacy empty-set zero conventions are retained; counts are supplied so zeros are not mistaken for observed molecular properties.
 
-Percentages are reported on a 0–100 scale. Across-run aggregation uses the arithmetic mean and sample standard deviation (ddof=1), with zero SD for a single run. No ranking-based run selection is performed.
+Percentages are reported on a 0–100 scale. `aggregate_metrics.csv` uses the arithmetic mean and sample standard deviation (ddof=1), with zero SD for a single run. This diagnostic file does not select the best run; use `best_max_tanimoto.csv` from the separate paper evaluation for that result.
 
 ## Seed and checkpoint provenance
 

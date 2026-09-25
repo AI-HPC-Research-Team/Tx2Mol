@@ -43,11 +43,16 @@ For the full example (**10 targets × 10 runs × 100 attempts**):
 
 ```bash
 python -m tx2mol.generate --config configs/generate_reference.json
+python scripts/evaluate_release_attempts.py \
+  --attempts outputs/reference_targets/raw_attempts.csv \
+  --output-dir outputs/reference_targets_evaluation
 ```
 
 ## 3. Read the results
 
-The small example writes to `outputs/reference_demo/`; the full example writes to `outputs/reference_targets/`. Inspect `raw_attempts.csv` for sampled molecules, `aggregate_metrics.csv` for per-target results, and `metadata.json` for settings and provenance. See [output and metric definitions](docs/TUTORIAL.md#3-read-the-results).
+For the full example, read `outputs/reference_targets_evaluation/best_max_tanimoto.csv`: **each target's highest maximum Tanimoto across ten runs**, scoring all valid molecules. `best_run_attempts.csv` contains every attempt in the winning groups. The generator's `raw_attempts.csv` retains all samples; `aggregate_metrics.csv` contains separate across-run diagnostics, including novel-only similarity.
+
+[Recompute the archived results](examples/paper_protocol/) without a GPU: the mean of the ten selected target maxima is **0.9136607 (0.914)**. Fresh samples may differ. See [metric definitions and outputs](docs/TUTORIAL.md#3-read-the-results).
 
 ## 4. Train the three-stage pipeline
 
@@ -60,6 +65,9 @@ python scripts/prepare_assets.py \
 python -m tx2mol.pretrain --config configs/pretrain.json
 python -m tx2mol.finetune --config configs/finetune.json
 python -m tx2mol.generate --config configs/generate.json
+python scripts/evaluate_release_attempts.py \
+  --attempts outputs/targets/raw_attempts.csv \
+  --output-dir outputs/targets_evaluation
 ```
 
 The defaults connect all three stages and save generated results under `outputs/targets/`. Keep each Tx2Mol checkpoint paired with the GeneVAE used during its training. See the [training tutorial](docs/TUTORIAL.md#4-train-the-three-stage-pipeline) for hyperparameters, backbone attribution, and implementation details.

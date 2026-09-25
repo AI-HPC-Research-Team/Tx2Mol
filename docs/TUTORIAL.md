@@ -110,9 +110,14 @@ The archived 100-attempt execution example is in [`examples/reference_demo/`](..
 
 ```bash
 python -m tx2mol.generate --config configs/generate_reference.json
+python scripts/evaluate_release_attempts.py \
+  --attempts outputs/reference_targets/raw_attempts.csv \
+  --output-dir outputs/reference_targets_evaluation
 ```
 
 Defaults are **10 targets × 10 runs × 100 attempts = 10,000 attempts**, with MCF7 conditioning, seed `42 + run_idx`, batch size 32, temperature 1.0, top-p 0.95, top-k 100, and maximum length 100. Results go to `outputs/reference_targets/`.
+
+The second command scores all valid molecules with the recovered paper evaluator and selects the run with the highest maximum Tanimoto for each target. Its results go to `outputs/reference_targets_evaluation/`. These are ten sampling runs with a fixed checkpoint, not ten additional training epochs.
 
 To select one target or change the sampling budget:
 
@@ -124,7 +129,26 @@ python -m tx2mol.generate --config configs/generate_reference.json \
 
 Explicit command-line options override JSON settings. Use a new output directory for each experiment; existing run outputs are protected from overwriting.
 
+For a custom budget, pass matching `--runs` and `--samples-per-run` to the evaluator. For example, use `--runs 3 --samples-per-run 100` for the EGFR command above, or `--runs 1 --samples-per-run 10` for the small example. The evaluator rejects missing runs, incomplete attempt records, and duplicate identifiers.
+
 ## 3. Read the results
+
+The paper evaluation directory contains:
+
+| File | Contents |
+| --- | --- |
+| `best_max_tanimoto.csv` | Highest run maximum per target; zero-based `run_idx` and one-based `best_group_1based` |
+| `best_run_attempts.csv` | Every attempt in each winning run, including invalid strings and duplicates |
+| `evaluation/all_runs_gxvaes_protocol.csv` | Scores for every run, before selection |
+| `provenance.json` | Mean of selected target maxima, input/evaluator hashes, command, and software versions |
+
+For each run, the score is the maximum over all valid generated molecule–eligible ligand pairs. Known ligands are canonicalized, deduplicated, and filtered against canonical training SMILES from column 2 (zero-based). Generated molecules are **not restricted to the novel subset**. Fingerprints are Morgan radius 2, 2,048 bits, with the original default `useChirality=False`. A score of 1 therefore indicates identical fingerprints, not necessarily an identical stereoisomer.
+
+Select the highest score among ten runs per target; ties choose the lowest run index. The final reported mean averages these ten selected target maxima. It does not average each molecule's best match or average the ten runs before selection. The recovered evaluator is preserved byte-for-byte in `scripts/evaluate_gxvaes_protocol.py`.
+
+The [archived evaluation examples](../examples/paper_protocol/) contain every run used for the historical score of **0.9136607**, plus two fresh 10,000-attempt datasets and their expected scores. They can be rescored on CPU without downloading weights. Fresh generation need not match historical extrema.
+
+The generation directory separately contains:
 
 | File | Contents |
 | --- | --- |
@@ -132,6 +156,8 @@ Explicit command-line options override JSON settings. Use a new output directory
 | `run_metrics.csv` | Metrics and molecule counts for each target/run |
 | `aggregate_metrics.csv` | Per-target arithmetic means and sample standard deviations across runs, without best-run selection |
 | `metadata.json` | Resolved options, input/checkpoint hashes, GeneVAE pairing, gene order, seeds, software/GPU information, and metric definitions |
+
+Similarity fields in these original generator files use the unique novel subset. They are separate diagnostics, not the all-valid, selected-best paper result above. In `best_run_attempts.csv`, their names are prefixed with `generation_novel_` to preserve that distinction.
 
 Validity is valid/attempted; uniqueness is unique/valid; novelty is novel/unique. Rates are percentages on a 0–100 scale. Novelty compares canonical SMILES with both training and validation sets. Structural similarity uses radius-2, 2,048-bit Morgan fingerprints. QED, SA, logP, Lipinski compliance, and molecular weight are evaluated on novel unique molecules; inspect molecule counts when interpreting zero-valued metrics.
 
@@ -187,6 +213,9 @@ The historical InfoNCE BOS-embedding fallback is retained and reported by the co
 
 ```bash
 python -m tx2mol.generate --config configs/generate.json
+python scripts/evaluate_release_attempts.py \
+  --attempts outputs/targets/raw_attempts.csv \
+  --output-dir outputs/targets_evaluation
 ```
 
 The loader resolves `outputs/tx2mol/best_checkpoint.json` and uses `outputs/gene_vae/gene_vae.pt`. It applies the same ten-target sampling configuration and writes `outputs/targets/`.

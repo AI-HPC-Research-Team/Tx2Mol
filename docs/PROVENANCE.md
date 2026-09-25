@@ -24,6 +24,14 @@ The same-named GeneVAE file found with the pretraining logs was numerically diff
 
 These changes improve execution and make known historical differences explicit. They mean fresh release training/metrics are not a promise of byte-identical reproduction of the historical scripts' accidental header loss, ID-column novelty calculation or unseeded samples.
 
+## Recovered paper evaluation (2026-09-25)
+
+The paper's maximum Tanimoto table was produced by a separate evaluator, `evaluate_gxvaes_protocol.py`, rather than the generator's inline novelty-filtered metrics. This evaluator already reads training SMILES from the correct column and scores all valid generated molecules. It is included unchanged with SHA256 `1c03c9dc21dae605db1a1920157e249788472d2487cae8cb85b91a822b6b5470`; `evaluate_release_attempts.py` adapts public raw-attempt files and exports the complete winning groups.
+
+All 100 historical per-run maxima were recovered exactly from the archived valid-SMILES lists. The mean of the ten selected target maxima is 0.9136607142857143. Two fresh 10,000-attempt datasets, from the public generator and the original sampler, score 0.9300271739130433 and 0.9205116245694605 respectively under the same evaluator. These are separate sampling outcomes, not replacements for the historical experiment. The checkpoint and paired GeneVAE are unchanged.
+
+`examples/paper_protocol/` contains all 100 historical valid-SMILES lists, both complete fresh raw-attempt datasets, expected per-run scores, selected-score comparisons, witness molecule pairs, and checksums. The historical source did not retain invalid raw strings; none are reconstructed. Original server-specific scripts and the complete audit remain archived separately; the runnable repository uses portable paths and the existing public generator.
+
 ## Retained limitation
 
 The historical BOS-embedding InfoNCE fallback is preserved, not silently repaired. See `METHODS.md`. The release records what the model actually returned during training. A scientifically revised molecule-specific contrastive objective should be treated as a new experiment and separately trained checkpoint.

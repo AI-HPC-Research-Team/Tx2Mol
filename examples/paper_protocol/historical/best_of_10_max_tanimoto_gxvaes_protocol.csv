@@ -1,0 +1,11 @@
+model,protein_name,run_idx,valid_num,unique_raw_num,novelty_gxvaes_percent,max_tanimoto_gxvaes
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,AKT1,0,96,90,86.66666666666667,1.0
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,AKT2,1,98,94,87.23404255319149,1.0
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,AURKB,0,93,88,86.36363636363636,1.0
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,CTSK,3,99,97,81.44329896907216,0.45
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,EGFR,4,100,99,82.82828282828282,1.0
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,HDAC1,0,99,96,84.375,0.84375
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,MTOR,2,98,88,71.5909090909091,1.0
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,PIK3CA,8,98,96,79.16666666666667,0.8428571428571429
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,SMAD3,6,100,99,81.81818181818181,1.0
+outputs_claude_ge_prefix_subLINCS_train_cell_line_infonce,TP53,2,97,95,75.78947368421052,1.0

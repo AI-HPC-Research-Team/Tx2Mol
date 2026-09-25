@@ -1,0 +1,81 @@
+{
+  "audit_date": "2026-09-25",
+  "protocol": "All valid molecules; canonical training exclusion on known ligands; Morgan radius 2, 2048 bits, useChirality=False; maximum per run, then highest of ten runs per target.",
+  "runs_per_target": 10,
+  "attempts_per_run": 100,
+  "datasets": {
+    "historical": {
+      "description": "All 100 archived valid-SMILES lists, extracted without changing their contents. Invalid raw strings were not retained in the historical source.",
+      "original_all_runs_statistics_sha256": "62681aeaa178e7380d0c44710ab1aff007468d7454d0b990ea32c1fa2dc39599",
+      "extracted_columns": [
+        "protein_name",
+        "run_idx",
+        "total_generated",
+        "valid_smiles"
+      ],
+      "mean_of_selected_target_maxima": 0.9136607142857143
+    },
+    "released": {
+      "description": "10,000 attempts from the public generator, followed by the recovered evaluator.",
+      "generator_git_commit": "b6c34fe65e9e3b52b7087cd2cb08b4d07b8ac4b4",
+      "mean_of_selected_target_maxima": 0.9300271739130433,
+      "seed_policy": "42 + run_idx; run_idx = 0..9",
+      "config": {
+        "config": "configs/generate_reference.json",
+        "model_dir": "checkpoints/reference/tx2mol",
+        "saved_gene_vae": "checkpoints/reference/gene_vae.pt",
+        "target_dir": "data/targets/test",
+        "source_ligands_dir": "data/targets/known_ligands",
+        "train_data_path": "data/train.csv.gz",
+        "val_data_path": "data/val.csv.gz",
+        "gene_order_path": "data/gene_order.json",
+        "output_dir": "outputs/check_20260925/reference_10runs_100",
+        "targets": [
+          "AKT1",
+          "AKT2",
+          "AURKB",
+          "CTSK",
+          "EGFR",
+          "HDAC1",
+          "MTOR",
+          "PIK3CA",
+          "SMAD3",
+          "TP53"
+        ],
+        "cell_line": "MCF7",
+        "seed": 42,
+        "num_runs": 10,
+        "num_samples": 100,
+        "batch_size": 32,
+        "max_length": 100,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 100,
+        "device": "auto",
+        "dtype": "bfloat16",
+        "legacy_reference_column": null
+      }
+    },
+    "fresh_original": {
+      "description": "10,000 fresh attempts using the original sampler. Only reference-fingerprint caching and raw/RNG tracing were added; an incomplete timing trial is excluded.",
+      "original_generator_sha256": "b603b8bdedb8d069b7cb18ddf22d0a6626066a5e7ef34a9a4ab4bf2a682b409e",
+      "mean_of_selected_target_maxima": 0.9205116245694605,
+      "valid_attempts": 9737,
+      "seed_policy": "No explicit seed reset, as in the original source; new output is not expected to match the historical molecules."
+    }
+  },
+  "checkpoint_sha256": "e0f8a688857004f6291642c1322527e3358905e3a4658a7fc6c2d61f0376fd47",
+  "gene_vae_sha256": "2bcc46ff71ebbfba65ef17d20a301680be5c579bf05495f2fd6d84e87d224a7e",
+  "evaluator_sha256": "1c03c9dc21dae605db1a1920157e249788472d2487cae8cb85b91a822b6b5470",
+  "generation_environment": {
+    "python": "3.10.18",
+    "torch": "2.1.2+cu118",
+    "transformers": "4.46.2",
+    "numpy": "1.26.4",
+    "rdkit_runtime": "2022.09.5",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "cuda": "11.8",
+    "flash_attn": "2.6.1"
+  },
+  "verification": "All 300 run maxima and 30 selected witness pairs independently verified on the generation server. See docs/VALIDATION.md for publication-side checks."
+}
