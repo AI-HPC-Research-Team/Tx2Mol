@@ -1,7 +1,0 @@
-{
-  "repeat_reference_AKT1_10_attempts_identical": true,
-  "final_smoke_targets": 10,
-  "final_smoke_attempts": 20,
-  "default_batch32_optimizer_step": true,
-  "cuda_gene_pretraining_step": true
-}

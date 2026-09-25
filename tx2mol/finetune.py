@@ -37,7 +37,7 @@ def build_parser():
                           ("epochs", 20), ("max_len", 100), ("seed", 42), ("eval_epochs", 1),
                           ("num_samples", 256), ("patience", 3), ("max_eval_batches", 50)):
         p.add_argument("--" + name, type=int, default=default)
-    p.add_argument("--max_train_steps", type=int, help="Stop after this many optimizer updates; intended for smoke tests.")
+    p.add_argument("--max_train_steps", type=int, help="Stop after this many optimizer updates; checkpoint selection still uses the generation-based composite score.")
     p.add_argument("--gene_hidden_sizes", nargs="+", type=int, default=[512, 256, 128])
     for name, default in (("gene_dropout", .1), ("infonce_weight", .2), ("infonce_temperature", .07),
                           ("lr", 1e-5), ("model_lr", 2e-5), ("prefix_lr", 5e-5),
@@ -45,8 +45,6 @@ def build_parser():
                           ("adam_epsilon", 1e-8), ("max_grad_norm", 1.0)):
         p.add_argument("--" + name, type=float, default=default)
     p.add_argument("--use_tenfold_binary", action=argparse.BooleanOptionalAction, default=False)
-    p.add_argument("--skip_generation_eval", action=argparse.BooleanOptionalAction, default=False,
-                   help="Smoke mode: select checkpoint by validation LM loss, NOT the paper's composite criterion.")
     p.add_argument("--precision", choices=("no", "bf16", "fp16"), default="bf16")
     return p
 
@@ -451,9 +449,8 @@ def main(argv=None):
         raise ValueError("Use --precision no on CPU; the original NovoMolGen FlashAttention backend requires CUDA.")
     if args.precision == "bf16" and not torch.cuda.is_bf16_supported():
         raise ValueError("This GPU does not support bf16. Use --precision fp16 on compatible CUDA GPUs.")
-    if not args.skip_generation_eval:
-        from rdkit.Contrib.SA_Score import sascorer  # fail before expensive training if unavailable
-        from rdkit.Chem import QED
+    from rdkit.Contrib.SA_Score import sascorer  # fail before expensive training if unavailable
+    from rdkit.Chem import QED
     output = Path(args.output_dir)
     output.mkdir(parents=True, exist_ok=True)
     if (output / "run_config.json").exists():
@@ -507,7 +504,7 @@ def main(argv=None):
                        gene_order_status=("verified_against_csv_headers" if args.csv_header == "infer" else
                                           "externally_supplied_expected_order" if train.gene_columns else "unverified_positional"),
                        gene_vae_sha256=_sha256(args.saved_gene_vae), model_hidden_size=hidden,
-                       selection_criterion="validation_lm_loss" if args.skip_generation_eval else "historical_composite_score",
+                       selection_criterion="historical_composite_score",
                        alignment_representation="not_observed_yet",
                        alignment_indexing="historical_hidden_states_minus_one_then_first_smiles_position_or_input_embedding_fallback",
                        bos_token_id=tokenizer.bos_token_id,
@@ -574,25 +571,22 @@ def main(argv=None):
         metrics = dict(epoch=epoch, global_step=global_step, train_loss=float(np.mean(losses)),
                        loss=float(np.mean(val_losses)), val_lm_loss=float(np.mean(val_lm_losses)),
                        selection_criterion=run_config["selection_criterion"],
-                       smoke_test=bool(args.skip_generation_eval or args.max_train_steps is not None))
-        if args.skip_generation_eval:
-            score = -metrics["val_lm_loss"]
-        else:
-            generated = []
-            while len(generated) < args.num_samples:
-                count = min(args.batch_size, args.num_samples - len(generated), len(val))
-                indices = np.random.choice(len(val), size=count, replace=False)
-                genes = torch.stack([val[i]["genes"] for i in indices])
-                cells = torch.tensor([val[i]["cell_line_idx"] for i in indices])
-                with acc.autocast():
-                    generated.extend(generate_samples_with_ge(acc.unwrap_model(model), gene_vae,
-                        acc.unwrap_model(projection), tokenizer, genes, cells, embedding,
-                        num_samples=count, max_length=args.max_len, device=acc.device))
-            generation_metrics, valid_smiles = _generation_metrics(generated, train.smiles_list)
-            metrics.update(generation_metrics)
-            score = metrics["composite_score"]
-            pd.DataFrame({"predict": valid_smiles}).to_csv(output / f"valid_gen_ep{epoch}.csv", index=False)
-            pd.DataFrame({"raw_smiles": generated}).to_csv(output / f"valid_raw_ep{epoch}.csv", index=False)
+                       training_capped=args.max_train_steps is not None)
+        generated = []
+        while len(generated) < args.num_samples:
+            count = min(args.batch_size, args.num_samples - len(generated), len(val))
+            indices = np.random.choice(len(val), size=count, replace=False)
+            genes = torch.stack([val[i]["genes"] for i in indices])
+            cells = torch.tensor([val[i]["cell_line_idx"] for i in indices])
+            with acc.autocast():
+                generated.extend(generate_samples_with_ge(acc.unwrap_model(model), gene_vae,
+                    acc.unwrap_model(projection), tokenizer, genes, cells, embedding,
+                    num_samples=count, max_length=args.max_len, device=acc.device))
+        generation_metrics, valid_smiles = _generation_metrics(generated, train.smiles_list)
+        metrics.update(generation_metrics)
+        score = metrics["composite_score"]
+        pd.DataFrame({"predict": valid_smiles}).to_csv(output / f"valid_gen_ep{epoch}.csv", index=False)
+        pd.DataFrame({"raw_smiles": generated}).to_csv(output / f"valid_raw_ep{epoch}.csv", index=False)
         if not math.isfinite(score):
             raise FloatingPointError("Non-finite validation checkpoint selection score.")
         history.append(metrics)
@@ -613,7 +607,7 @@ def main(argv=None):
             _json(checkpoint / "best_metrics.json", metrics)
             _json(output / "best_checkpoint.json", dict(path=checkpoint.name, epoch=epoch,
                   selection_criterion=run_config["selection_criterion"], score=score,
-                  smoke_test=metrics["smoke_test"]))
+                  training_capped=metrics["training_capped"]))
             print(f"Saved checkpoint: {checkpoint}")
         no_improve = 0 if improved else no_improve + 1
         print(json.dumps(metrics))

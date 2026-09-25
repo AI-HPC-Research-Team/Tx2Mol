@@ -28,6 +28,6 @@ git diff --check -- . ':(exclude)**/*.csv'
 git status --short
 ```
 
-When model loading or the training/generation interface changes, also run the documented GPU smoke test in a new output directory and record its scope in `docs/VALIDATION.md`. A packaging check or a short smoke test does not establish reproduction of full scientific results.
+When model loading or generation changes, run the README quick start on a GPU in a new output directory. Training changes require a focused check of the affected behavior. Record the scope in `docs/VALIDATION.md`; short execution checks do not establish reproduction of full scientific results.
 
 Review the exact staged changes, commit them, and push normally without rewriting published history. Retain the original scientific records and state any newly tested environment or implementation change explicitly.

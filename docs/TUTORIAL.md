@@ -16,7 +16,6 @@ Choose the workflow that matches your goal:
 | --- | --- |
 | Generate with the released model | [Quick start](#2-quick-start-use-the-released-checkpoint) |
 | Train and generate a new model | [Training](#4-train-the-three-stage-pipeline) |
-| Check the full pipeline before a long run | [Smoke test](#5-validate-the-pipeline) |
 
 Source code and data are ordinary repository files. Large weights are [Release assets](https://github.com/Yaxin-Xu/Tx2Mol/releases/tag/v1.0), downloaded and verified by the commands below. No private server paths or credentials are required.
 
@@ -229,14 +228,6 @@ In the installed environment, run the CPU regression suite and data checks:
 python -m unittest discover -s tests -v
 python scripts/validate_data.py
 ```
-
-After installing the base asset, test the complete connection on a CUDA GPU:
-
-```bash
-bash scripts/smoke_test.sh outputs/smoke01
-```
-
-This performs two GeneVAE updates, two Tx2Mol updates on small example subsets, saves/reloads the new checkpoint, and attempts two molecules per target. The smoke test selects checkpoints by validation language-model loss, explicitly differing from the full training criterion. It checks installation and interoperability, not scientific performance.
 
 The earlier Linux/CUDA checks and limitations are recorded in [`docs/VALIDATION.md`](VALIDATION.md). Full 2,000/20-epoch training was not repeated during packaging, and installation on a clean host was not independently tested.
 

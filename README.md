@@ -77,11 +77,10 @@ The defaults connect all three stages; generation automatically evaluates and se
 
 ```bash
 python -m unittest discover -s tests -v
-# After installing the base weights, run a short GPU integration check:
-bash scripts/smoke_test.sh outputs/smoke01
+python scripts/validate_data.py
 ```
 
-The smoke test checks execution, not scientific performance. Completed checks and their scope are recorded in [VALIDATION.md](docs/VALIDATION.md).
+Completed checks and their scope are recorded in [VALIDATION.md](docs/VALIDATION.md).
 
 ## 6. Datasets and documentation
 

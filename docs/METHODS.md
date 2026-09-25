@@ -22,7 +22,7 @@ Concatenate 64 latent coordinates with a 14-dimensional cell-line one-hot vector
 
 Post-training uses AdamW, generator learning rate 2e−5, projection rate 5e−5, weight decay 0.01, epsilon 1e−8, batch 32, accumulation 1, up to 20 epochs, a 10% warm-up and cosine decay. Gradient norm clipping is 1.0, matching the value actually executed by the historical script, rather than its unused saved argument 0.6. GeneVAE remains frozen. The default uses BF16 and seed 42.
 
-The full training checkpoint criterion preserves the historical weighted combination of molecular validity, uniqueness, diversity and QED (see `_generation_metrics` for the executable definition). Checkpoints and resolved settings are saved on validation improvement; patience is 3 with minimum improvement 0.001. The smoke-only `--skip_generation_eval` mode selects by validation LM loss and explicitly marks outputs as smoke tests.
+The full training checkpoint criterion preserves the historical weighted combination of molecular validity, uniqueness, diversity and QED (see `_generation_metrics` for the executable definition). Checkpoints and resolved settings are saved on validation improvement; patience is 3 with minimum improvement 0.001.
 
 ### Historical InfoNCE limitation
 
